@@ -1,0 +1,93 @@
+
+#include <stdio.h>
+#include <assert.h>
+#include "../list.h"
+
+#define CONTAINER_OF(ptr, type, field_name) ((type *)(((char *)ptr) - offsetof(type, field_name)))
+
+struct my_list_element {
+    struct list_element element;
+    int value;
+};
+
+struct list my_list;
+
+struct list my_list2;
+
+int main(void) {
+    //initialize
+    assert(list_init(&my_list) == 0);
+    list_init(&my_list2);
+    
+    //check empty
+    bool is_empty;
+    assert(list_is_empty(&my_list, &is_empty) == 0);
+    assert(is_empty);
+    
+    //create element
+    struct my_list_element e0 = {0};
+    
+    //should not be in a list yet
+    bool in_list;
+    assert(list_element_in_list(&e0.element, &in_list) == 0);
+    assert(!in_list);
+    
+    //prepend to my_list
+    assert(list_prepend(&my_list, &e0.element) == 0);
+    assert(list_prepend(&my_list, &e0.element) != 0);
+    assert(list_element_in_list(&e0.element, &in_list) == 0);
+    assert(in_list);
+    assert(list_is_empty(&my_list, &is_empty) == 0);
+    assert(!is_empty);
+    
+    //another element
+    struct my_list_element e1 = {0};
+    e1.value = 1;
+    assert(list_append(&my_list, &e1.element) == 0);
+    assert(list_append(&my_list, &e1.element) != 0);
+    
+    //iterator
+    struct list_iterator my_iterator;
+    assert(list_iterator_init(&my_iterator, &my_list) == 0);
+    
+    //get first element
+    struct list_element *current;
+    assert(list_iterator_next(&my_iterator, &current) == 0);
+    struct my_list_element *element = CONTAINER_OF(current, struct my_list_element, element);
+    assert(element->value == 0);
+    
+    //get second element
+    assert(list_iterator_next(&my_iterator, &current) == 0);
+    element = CONTAINER_OF(current, struct my_list_element, element);
+    assert(element->value == 1);
+    
+    //no more elements
+    assert(list_iterator_next(&my_iterator, &current) != 0);
+    
+    //remove element
+    assert(list_remove_safe(&my_list, &e1.element) == 0);
+    
+    //remove element from another list
+    struct my_list_element e3 = {0};
+    list_append(&my_list2, &e3.element);
+    assert(list_remove_safe(&my_list, &e3.element) != 0);
+
+    //recheck list
+    assert(list_iterator_init(&my_iterator, &my_list) == 0);
+    assert(list_iterator_next(&my_iterator, &current) == 0);
+    element = CONTAINER_OF(current, struct my_list_element, element);
+    assert(element->value == 0);
+    
+    //remove another element
+    assert(list_remove(&my_list, &e0.element) == 0);
+    
+    //recheck list
+    assert(list_iterator_init(&my_iterator, &my_list) == 0);
+    assert(list_iterator_next(&my_iterator, &current) != 0);
+    
+    //try to remove again
+    assert(list_remove(&my_list, &e0.element) != 0);
+    
+    printf("tests passed");
+    return 0;
+}
