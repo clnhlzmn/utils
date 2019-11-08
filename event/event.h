@@ -9,7 +9,6 @@
 #ifndef EVENT_H_
 #define EVENT_H_
 
-/*depends on https://github.com/clnhlzmn/list.git*/
 #include "list.h"
 
 #define CONTAINER_OF(ptr, type, field_name) ((type *)(((char *)ptr) - offsetof(type, field_name)))
