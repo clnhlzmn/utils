@@ -1,7 +1,9 @@
-test: ../../list/list.h test_event.c ../event.h
-	gcc -o test -Wall -Wextra -Werror -I../../list/ -g test_event.c
+test: ../../list/list.h test_event.c ../event.h out
+	gcc -o out/test -Wall -Wextra -Werror -I../../list/ -g test_event.c
+	./out/test
+
+out:
+	mkdir out
 
 clean:
-	rm -f list.h
-	rm -rf test.exe
-	rm -rf test
+	rm -rf out
