@@ -25,7 +25,9 @@ int main(void) {
     assert(is_empty);
     
     //create element
-    struct my_list_element e0 = {0};
+    struct my_list_element e0;
+    assert(list_element_init(&e0.element) == 0);
+    e0.value = 0;
     
     //should not be in a list yet
     bool in_list;
@@ -41,7 +43,8 @@ int main(void) {
     assert(!is_empty);
     
     //another element
-    struct my_list_element e1 = {0};
+    struct my_list_element e1;
+    list_element_init(&e1.element);
     e1.value = 1;
     assert(list_append(&my_list, &e1.element) == 0);
     assert(list_append(&my_list, &e1.element) != 0);
@@ -65,12 +68,7 @@ int main(void) {
     assert(list_iterator_next(&my_iterator, &current) != 0);
     
     //remove element
-    assert(list_remove_safe(&my_list, &e1.element) == 0);
-    
-    //remove element from another list
-    struct my_list_element e3 = {0};
-    list_append(&my_list2, &e3.element);
-    assert(list_remove_safe(&my_list, &e3.element) != 0);
+    assert(list_remove(&my_list, &e1.element) == 0);
 
     //recheck list
     assert(list_iterator_init(&my_iterator, &my_list) == 0);

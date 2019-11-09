@@ -64,8 +64,22 @@ static inline int list_element_insert_before(struct list_element *before, struct
     return 0;
 }
 
+/*
+removes an element from a list
+returns 0 if successful
+*/
+static inline int list_element_remove(struct list_element *element) {
+    bool in_list;
+    if (list_element_in_list(element, &in_list) || !in_list) return -1;
+    element->prev->next = element->next;
+    element->next->prev = element->prev;
+    element->next = NULL;
+    element->prev = NULL;
+    return 0;
+}
+
 struct list {
-    LIST_PRIVATE struct list_element *head;
+    LIST_PRIVATE struct list_element head;
 };
 
 /*
@@ -74,7 +88,8 @@ returns 0 if successful
 */
 static inline int list_init(struct list *list) {
     if (!list) return -1;
-    list->head = NULL;
+    list->head.prev = &list->head;
+    list->head.next = &list->head;
     return 0;
 }
 
@@ -85,7 +100,7 @@ is_empty is used to store the result
 */
 static inline int list_is_empty(struct list *list, bool *is_empty) {
     if (!list || !is_empty) return -1;
-    *is_empty = list->head == NULL;
+    *is_empty = list->head.prev == &list->head;
     return 0;
 }
 
@@ -94,18 +109,8 @@ prepends element to list
 return 0 if successful
 */
 static inline int list_prepend(struct list *list, struct list_element *element) {
-    bool in_list, is_empty;
-    if (list_element_in_list(element, &in_list) || in_list) return -1;
-    if (list_is_empty(list, &is_empty)) return -1;
-    if (is_empty) {
-        list->head = element;
-        element->next = element;
-        element->prev = element;
-    } else {
-        if (list_element_insert_before(list->head, element)) return -1;
-        list->head = list->head->prev;
-    }
-    return 0;
+    if (!list) return -1;
+    return list_element_insert_after(&list->head, element);
 }
 
 /*
@@ -113,32 +118,8 @@ appends element to list
 return 0 if successful
 */
 static inline int list_append(struct list *list, struct list_element *element) {
-    bool in_list, is_empty;
-    if (list_element_in_list(element, &in_list) || in_list) return -1;
-    if (list_is_empty(list, &is_empty)) return -1;
-    if (is_empty) {
-        list->head = element;
-        element->next = element;
-        element->prev = element;
-    } else {
-        return list_element_insert_before(list->head, element);
-    }
-    return 0;
-}
-
-/*
-removes an element from a list
-returns 0 if successful
-CAUTION: if element is the head element of a list then the list will be corrupted
-*/
-LIST_PRIVATE static inline int list_element_remove(struct list_element *element) {
-    bool in_list;
-    if (list_element_in_list(element, &in_list) || !in_list) return -1;
-    element->prev->next = element->next;
-    element->next->prev = element->prev;
-    element->next = NULL;
-    element->prev = NULL;
-    return 0;
+    if (!list) return -1;
+    return list_element_insert_before(&list->head, element);
 }
 
 /*
@@ -147,13 +128,7 @@ return 0 if successful
 if element is a member of a list other than the first argument then the effect is undefined
 */
 static inline int list_remove(struct list *list, struct list_element *element) {
-    bool is_empty, in_list;
-    if (list_is_empty(list, &is_empty) || is_empty) return -1;
-    if (list_element_in_list(element, &in_list) || !in_list) return -1;
-    if (element == list->head) {
-        if (list->head == list->head->next) list->head = NULL;
-        else list->head = list->head->next;
-    }
+    (void) list;
     return list_element_remove(element);
 }
 
@@ -169,7 +144,7 @@ return 0 if successful
 static inline int list_iterator_init(struct list_iterator *it, struct list *list) {
     if (!it || !list) return -1;
     it->list = list;
-    it->current = NULL;
+    it->current = &list->head;
     return 0;
 }
 
@@ -180,35 +155,10 @@ element is used to store the next element
 */
 static inline int list_iterator_next(struct list_iterator *it, struct list_element **element) {
     if (!it || !element) return -1;
-    bool is_empty;
-    if (list_is_empty(it->list, &is_empty) || is_empty) return -1;
-    if (!it->current) {
-        it->current = it->list->head;
-        *element = it->current;
-    } else if (it->current->next == it->list->head) {
-        return -1;
-    } else {
-        it->current = it->current->next;
-        *element = it->current;
-    }
+    if (it->current->next == &it->list->head) return -1;
+    it->current = it->current->next;
+    *element = it->current;
     return 0;
-}
-
-/*
-removes element from list
-return 0 if successful
-will not corrupt list if element is not a member
-O(n) where n is length of list
-*/
-static inline int list_remove_safe(struct list *list, struct list_element *element) {
-    struct list_iterator it;
-    if (list_iterator_init(&it, list) != 0) return -1;
-    struct list_element *elem;
-    while (list_iterator_next(&it, &elem) == 0) {
-        if (elem == element)
-            return list_remove(list, elem);
-    }
-    return -1;
 }
 
 #endif //LIST_H

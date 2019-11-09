@@ -1,5 +1,5 @@
 test: ../list.h test_list.c
-	gcc -o test test_list.c -Wall -Wextra -Werror
+	gcc test_list.c -g -o test -Wall -Wextra -Werror -std=c99
 
 clean:
 	rm -rf test.exe

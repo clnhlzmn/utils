@@ -42,7 +42,7 @@ static inline int event_subscribe(struct event *evt, struct event_handler *handl
 
 static inline int event_unsubscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
-    return list_remove_safe(&evt->handlers, &handler->element);
+    return list_remove(&evt->handlers, &handler->element);
 }
 
 static inline int event_dispatch(struct event *evt, void *ctx) {
