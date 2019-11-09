@@ -27,14 +27,14 @@ int main(void) {
     assert(event_subscribe(&event1, &handler1) != 0);
     current_handler = &handler1;
     current_event = &event1;
-    assert(event_dispatch(&event1, &handler1) == 0);
-    assert(event_dispatch(&event2, &handler1) == 0);
+    assert(event_publish(&event1, &handler1) == 0);
+    assert(event_publish(&event2, &handler1) == 0);
     assert(event_unsubscribe(&event1, &handler2) != 0);
     assert(event_unsubscribe(&event1, &handler1) == 0);
     current_handler = NULL;
-    assert(event_dispatch(&event1, &handler1) == 0);
+    assert(event_publish(&event1, &handler1) == 0);
     current_event = &event2;
-    assert(event_dispatch(&event2, &handler2) == 0);
+    assert(event_publish(&event2, &handler2) == 0);
     printf("tests passed\r\n");
     return 0;
 }

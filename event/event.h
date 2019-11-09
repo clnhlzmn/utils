@@ -45,7 +45,7 @@ static inline int event_unsubscribe(struct event *evt, struct event_handler *han
     return list_remove(&evt->handlers, &handler->element);
 }
 
-static inline int event_dispatch(struct event *evt, void *ctx) {
+static inline int event_publish(struct event *evt, void *ctx) {
     if (!evt) return -1;
     struct list_iterator it;
     list_iterator_init(&it, &evt->handlers);
