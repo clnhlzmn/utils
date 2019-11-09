@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <assert.h>
 #include "../crc16.h"
 
@@ -8,4 +9,6 @@ int main(void) {
     assert(!crc16(&crc16_val, data, 9));
     crc16_val = CRC16_FINALIZE(crc16_val);
     assert(crc16_val == 0xfd7d);
+    printf("tests passed\r\n");
+    return 0;
 }

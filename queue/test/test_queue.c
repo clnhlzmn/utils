@@ -18,6 +18,7 @@ int main() {
     struct queue_test q;
     //initialize
     queue_test_init(&q);
+    assert(queue_test_count(&q) == 0);
     //a value
     int val = -1;
     assert(queue_test_pop(&q, &val) != 0 && "queue_*_pop should not return zero when queue is empty");
@@ -25,6 +26,8 @@ int main() {
     for (int i = 0; i < COUNT; ++i) {
         assert(queue_test_push(&q, &i) == 0 && "queue_*_push should return zero when queue is not full");
     }
+    //
+    assert(queue_test_count(&q) == COUNT);
     //check foreach
     int test = 0;
     queue_test_foreach(&q, cb, &test);
@@ -38,5 +41,6 @@ int main() {
     }
     //check that we can't pop any more
     assert(queue_test_pop(&q, &val) != 0 && "queue_*_pop should not return zero when queue is empty");
+    printf("tests passed\r\n");
     return 0;
 }

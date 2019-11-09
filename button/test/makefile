@@ -1,6 +1,9 @@
-test: test_button.c ../button.h
-	gcc -o test -Wall -Wextra -Werror test_button.c
+test: test_button.c ../button.h out
+	gcc -o out/test -Wall -Wextra -Werror -g test_button.c
+	./out/test
+
+out:
+	mkdir out
 
 clean:
-	rm -rf test.exe
-	rm -rf test
+	rm -rf out

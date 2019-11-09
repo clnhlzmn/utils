@@ -102,6 +102,6 @@ int main(void) {
         button_init(&button, false, button_test_event_handler);
         test_button(&button, input_state, expected_output_state);
     }
-    printf("tests passed");
+    printf("tests passed\r\n");
     return 0;
 }

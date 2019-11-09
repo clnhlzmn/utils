@@ -86,6 +86,6 @@ int main(void) {
     //try to remove again
     assert(list_remove(&my_list, &e0.element) != 0);
     
-    printf("tests passed");
+    printf("tests passed\r\n");
     return 0;
 }
