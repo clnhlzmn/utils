@@ -4,9 +4,9 @@ A single header library for handling software debouncing, edge dectection, and b
 
 ## example
 
+```c
 #include "button.h"
 
-```c
 //a debouncer instance (not necessary)
 struct debouncer db;
 
