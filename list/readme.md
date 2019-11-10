@@ -27,8 +27,10 @@ int main(void) {
     //add elements
     eo.data = 0;
     list_element_init(&e0.elem);
+    list_append(&my_list, &e0.elem);
     e1.data = 1;
     list_element_init(&e1.elem);
+    list_append(&my_list, &e1.elem);
     
     //iterate
     struct list_iterator it;
