@@ -12,6 +12,13 @@ Useful for filtering analog inputs to produce a smooth looking output for displa
 
 * no dynamic memory allocation
 
+## how to use
+
+1. Include `moving_average_filter.h`
+2. Create an instance of the moving average filter type with a name, type, and size with the macro `MOVING_AVERAGE_FILTER`.
+3. Create an instance of `struct maf_*` where `*` is the name you passed to `MOVING_AVERAGE_FILTER`.
+4. Initialize the instance with `maf_*_init` and input new values with `maf_*_input`.
+
 ## example
 
     #include <stdio.h>

@@ -9,6 +9,14 @@ Originally based on [Microcontrollers: Interrupt-safe ring buffers]. However, I 
 * no dynamic allocation
 * simple api `init`, `push`, `pop`
 
+## how to use
+
+1. Include `queue.h`.
+2. Create an instance of the queue type and functions by passing a name, type, and size to the macro `QUEUE`.
+3. Create an instance of the type, `struct queue_*` where `*` is the name you passed to `QUEUE`.
+4. Initialize the instance with `queue_*_init`. 
+5. Push and pop with `queue_*_push` and `queue_*_pop`.
+
 ## example
 
 ```c
