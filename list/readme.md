@@ -33,7 +33,7 @@ int main(void) {
     list_init(&my_list);
     
     //add elements
-    eo.data = 0;
+    e0.data = 0;
     list_element_init(&e0.elem);
     list_append(&my_list, &e0.elem);
     e1.data = 1;
