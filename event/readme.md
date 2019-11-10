@@ -2,7 +2,7 @@
 
 A single header library that implements the publish/subscribe pattern.
 
-# example
+## example
 
 ```c
 
