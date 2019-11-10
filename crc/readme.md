@@ -2,6 +2,14 @@
 
 A library for calculating cyclic redundancy codes. I use crc16.h/c for detecting errors in board to board spi communications in noisy environments and for detecting corruption in eeprom memory caused by failure of the memory hardware or incomplete modifications. Unfortunately this method isn't 100%. There is a possibility of corruption not being detected, but depending on the size of the crc and the size of the data we can make the probability acceptably small.
 
+## how to use
+
+1. Include `crc16.h` and `crc16.c` in your project.
+2. Initialize a crc of type `uint16_t` with `CRC16_INIT`.
+3. Call `crc16_update` with a pointer to the initialized crc, a pointer to the data over which to calculate the crc, and the size of the data. `crc16_update` can be called repeatedly on new data as it becomes available.
+4. Finalize the crc with `crc = CRC16_FINALIZE(crc)`.
+5. Embed your newly calculated crc with the data you wish to protect, or compare it with the crc that was embedded to determine if the data is valid.
+
 ## example
 
 ```c
