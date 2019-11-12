@@ -4,15 +4,19 @@
 #include <stdio.h>
 #include <assert.h>
 
+//create pool for 10 longs
 POOL(test, long, 10);
 
+//create an instance
 struct pool_test my_pool;
 
 int main(void) {
     //init instance
     assert(pool_test_init(&my_pool) == 0);
+    
     //a place to store my allocations
     long *ints[10] = {0};
+    
     //do a lot of allocs and frees
     for (int _ = 0; _ < 100000; ++_) {
         //pick an index
