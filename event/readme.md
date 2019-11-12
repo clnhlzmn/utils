@@ -4,7 +4,7 @@ A single header library that implements the publish/subscribe pattern.
 
 ## how to use
 
-1. Include `event.h`.
+1. Include `event.h` (`event.h` requires `list.h` so make sure your compiler can find that too).
 2. Create instances of `struct event` for each event and initialize them with `event_init`.
 3. Create instances of `struct event_handler`, and corresponding handler functions, for each event handler and initialize them with `event_handler_init`.
 4. Subscribe handlers to events that they're interested in with `event_subscribe`.
