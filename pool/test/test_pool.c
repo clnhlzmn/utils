@@ -17,6 +17,13 @@ int main(void) {
     //a place to store my allocations
     long *ints[10] = {0};
     
+    //first make sure we can alloc 10
+    for (int i = 0; i < 10; ++i) {
+        ints[i] = pool_test_alloc(&my_pool);
+        assert(ints[i]);
+        *ints[i] = i;
+    }
+    
     //do a lot of allocs and frees
     for (int _ = 0; _ < 100000; ++_) {
         //pick an index
