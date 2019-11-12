@@ -28,8 +28,8 @@ static inline type *pool_##name##_alloc(struct pool_##name *self) {             
     struct slist_element *head;                                                 \
     if (slist_remove_head(&self->free_list, &head))                             \
         return NULL;                                                            \
-        union pool_##name##_private *item = (union pool_##name##_private *)     \
-            (((char *)head) - offsetof(union pool_##name##_private, element));  \
+    union pool_##name##_private *item = (union pool_##name##_private *)         \
+        (((char *)head) - offsetof(union pool_##name##_private, element));      \
     return &item->data;                                                         \
 }                                                                               \
 static inline void pool_##name##_free(struct pool_##name *self, type *obj) {    \
