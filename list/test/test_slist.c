@@ -77,6 +77,23 @@ int main(void) {
     //try to remove again
     assert(slist_remove(&my_list, &e0.element) != 0);
     
+    //add items to list again
+    slist_prepend(&my_list2, &e1.element);
+    slist_prepend(&my_list2, &e0.element);
+    
+    //remove head
+    struct slist_element *head;
+    //should be e0
+    assert(slist_remove_head(&my_list2, &head) == 0);
+    element = CONTAINER_OF(head, struct my_list_element, element);
+    assert(element->value == 0);
+    //should be e1
+    assert(slist_remove_head(&my_list2, &head) == 0);
+    element = CONTAINER_OF(head, struct my_list_element, element);
+    assert(element->value == 1);
+    //no head
+    assert(slist_remove_head(&my_list2, &head) != 0);
+    
     printf("tests passed\r\n");
     return 0;
 }

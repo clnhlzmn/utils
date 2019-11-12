@@ -108,6 +108,19 @@ static inline int slist_remove(struct slist *list, struct slist_element *element
     return slist_element_remove_after(last);
 }
 
+/*
+removes head element from list
+element pointer is set to head element if remove is successful
+return 0 if successful
+*/
+static inline int slist_remove_head(struct slist *list, struct slist_element **element) {
+    if (!element) return -1;
+    bool is_empty;
+    if (slist_is_empty(list, &is_empty) || is_empty) return -1;
+    *element = list->head.next;
+    return slist_element_remove_after(&list->head);
+}
+
 struct slist_iterator {
     SLIST_PRIVATE struct slist_element *current;
 };
