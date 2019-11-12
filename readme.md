@@ -27,6 +27,10 @@ A single header library that implements a doubly linked intrusive list.
 
 A single header library that implements an efficient, generic, moving average filter.
 
+## pool
+
+A single header generic pool allocator.
+
 ## queue
 
 A single header library that implements an efficient, generic, FIFO queue.
