@@ -1,14 +1,24 @@
 # list
 
-A single header implementation of an intrusive circular doubly linked list.
+A single header implementation of an intrusive circular doubly linked list and an intrusive singly linked list.
 
 ## how to use
 
+### list
+
 1. Include `list.h`.
-2. Embed a member of type `struct list_element` in your struct that you want to store in a list. To store an object in more than one list at a time it should have another `struct list_element` member for each list. If an object will only be in one list at a time then it needs only one `struct list_element`.
+2. Embed a member of type `struct list_element` in your struct that will be a member of a list. To store an object in more than one list at a time it should have another `struct list_element` member for each list. If an object will only be in one list at a time then it needs only one `struct list_element`.
 3. Create instances of `struct list` to represent lists.
 4. Use `list_append` and/or `list_prepend` to add `struct list_element`s to your list(s).
-5. Create use `struct list_iterator` instances to traverse your lists.
+5. Use `struct list_iterator` and `list_iterator_init`/`list_iterator_next` to traverse your lists.
+
+### slist
+
+1. Include `slist.h`
+2. Embed a member of type `struct slist_element` in the struct that will be a member of a list.
+3. Create an instance of `struct slist`.
+4. Add elements to the list with `slist_append` and `slist_prepend`. Remove with `slist_remove`.
+5. Use `struct slist_iterator` and `slist_iterator_init`/`slist_iterator_next` to traverse your lists.
 
 ## example
 
@@ -52,3 +62,5 @@ int main(void) {
 }
 
 ```
+
+See `test/test_slist.h` for an example of slist.
