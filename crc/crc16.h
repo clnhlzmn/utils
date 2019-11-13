@@ -1,8 +1,6 @@
-/*
- * crc_ccitt16.h
- *
- * Created: 11/21/2018 11:22:28 AM
- *  Author: Colin
+/**
+@file
+@brief functions for calculating 16 bit cyclic redundancy codes
  */ 
 
 
@@ -12,19 +10,22 @@
 #include <stddef.h>
 #include <stdint.h>
 
-/*
-initialize crc value
+/**
+@brief initialize crc value
 */
 #define CRC16_INIT (0xffff)
 
-/*
-finalize crc value
+/**
+@brief finalize crc value
 */
 #define CRC16_FINALIZE(val) (val ^ 0xffff)
 
-/*
-computes the crc for data and uses crc for the result
-returns 0 if successful
+/**
+@brief computes the crc for data and uses crc for the result
+@param crc pointer to initialized crc value
+@param data pointer to data over which to calculate crc
+@param size number of bytes of data
+@return 0 if successful
 */
 int crc16(uint16_t *crc, const uint8_t *data, size_t size);
 

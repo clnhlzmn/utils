@@ -1,12 +1,16 @@
 
+/**
+@file
+@brief Structures and functions for handling software debouncing, edge detection, and button press, release, hold, and repeat events.
+*/
 
 #ifndef BUTTON_UTILS_H
 #define BUTTON_UTILS_H
 
 #include <stdbool.h>
 
-/*
-a software debouncer
+/**
+@brief a software debouncer
 */
 struct debouncer {
     bool current_value;
@@ -16,10 +20,11 @@ struct debouncer {
 
 static inline void debouncer_set_count(struct debouncer *self, int count);
 
-/*
-initialize a debouncer.
-count is how many times input state should repeat before output state changes
-initial is initial output state
+/**
+@brief initialize a debouncer
+@param self pointer to instance
+@param count how many times input state should repeat before output state changes
+@param initial initial output state
 */
 static inline void debouncer_init(
     struct debouncer *self, int count, bool initial) {
@@ -27,7 +32,7 @@ static inline void debouncer_init(
     debouncer_set_count(self, count);
 }
 
-/*
+/**
 set the count for a debouncer
 */
 static inline void debouncer_set_count(struct debouncer *self, int count) {
@@ -38,7 +43,7 @@ static inline void debouncer_set_count(struct debouncer *self, int count) {
     self->current_count = self->reset_count;
 }
 
-/*
+/**
 update debouncer state
 value is input state
 returns output state after debouncing
@@ -55,14 +60,14 @@ static inline bool debouncer_update(struct debouncer *self, bool value) {
     return self->current_value;
 }
 
-/*
+/**
 get the output state of the debouncer
 */
 static inline bool debouncer_value(struct debouncer *self) {
     return self->current_value;
 }
 
-/*
+/**
 return values for edge_detector_update
 */
 enum edge_detector_edge {
@@ -71,14 +76,14 @@ enum edge_detector_edge {
     EDGE_FALLING,
 };
 
-/*
+/**
 edge detector state
 */
 struct edge_detector {
     bool value;
 };
 
-/*
+/**
 initialize an edge detector
 initial is initial state
 */
@@ -87,7 +92,7 @@ static inline void edge_detector_init(struct edge_detector *self,
     self->value = initial;
 }
 
-/*
+/**
 input new state to edge detector
 value is new state
 return value is type of edge detected (none, rising, falling)
@@ -106,14 +111,14 @@ static inline enum edge_detector_edge
     return EDGE_NONE;
 }
 
-/*
+/**
 get the current value of an edge detector
 */
 static inline bool edge_detector_get_value(struct edge_detector *self) {
     return self->value;
 }
 
-/*
+/**
 button events
 */
 enum button_event {
@@ -122,7 +127,7 @@ enum button_event {
     BUTTON_EVENT_HOLD
 };
 
-/*
+/**
 internal button timer state
 */
 enum button_timer_state {
@@ -131,7 +136,7 @@ enum button_timer_state {
     BUTTON_TIMER_REPEAT
 };
 
-/*
+/**
 button state
 */
 struct button {
@@ -145,7 +150,7 @@ struct button {
     unsigned long long repeat_time;
 };
 
-/*
+/**
 initialize a button
 initial is initial state (false=not pressed, true=pressed)
 handler is button event handler function
@@ -162,7 +167,7 @@ static inline void button_init(struct button *self, bool initial,
     self->repeat_time = 0;
 }
 
-/*
+/**
 set the button hold time
 time is hold delay time
 use indicates if hold events should be generated
@@ -173,7 +178,7 @@ static inline void button_set_hold_time(struct button *self,
     self->use_hold_timer = use;
 }
 
-/*
+/**
 set the button repeat time
 time is repeat delay time
 use indicates if repeat events should be generated
@@ -184,14 +189,14 @@ static inline void button_set_repeat_time(struct button *self,
     self->use_repeat_timer = use;
 }
 
-/*
+/**
 get the current button value (false=not pressed, true=pressed)
 */
 static inline bool button_get_value(struct button *self) {
     return edge_detector_get_value(&self->edge_detector);
 }
 
-/*
+/**
 input new state to a button
 time is current time
 value is current button state (read from hardware or any other source)
