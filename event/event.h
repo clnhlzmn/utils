@@ -11,8 +11,6 @@
 
 #include "list.h"
 
-#define CONTAINER_OF(ptr, type, field_name) ((type *)(((char *)ptr) - offsetof(type, field_name)))
-
 /*
 event state
 */
@@ -74,7 +72,8 @@ static inline int event_publish(struct event *evt, void *ctx) {
     list_iterator_init(&it, &evt->handlers);
     struct list_element *element;
     while (list_iterator_next(&it, &element) == 0) {
-        struct event_handler *handler = CONTAINER_OF(element, struct event_handler, element);
+        struct event_handler *handler = (struct event_handler *)
+            ((char*)element - offsetof(struct event_handler, element));
         if (handler->fun) handler->fun(evt, ctx);
     }
     return 0;
