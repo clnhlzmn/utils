@@ -1,8 +1,7 @@
-/*
- * event.h
- *
- * Created: 11/8/2019 8:56:52 AM
- *  Author: Colin
+/**
+\file event.h
+\brief an implementation of the publish/subscribe pattern
+\details depends on \ref list.h
  */ 
 
 
@@ -11,24 +10,31 @@
 
 #include "list.h"
 
-/*
-event state
+/**
+\brief event state
 */
 struct event {
+    /** \brief a list of event handlers that are subscribed to this event*/
     struct list handlers;
 };
 
-/*
-event handler state
+/**
+\brief event handler state
 */
 struct event_handler {
+    /** \brief list element for attaching handler to an event */
     struct list_element element;
+    /** \brief handler function pointer 
+    \param evt a pointer to the \c struct \c event being published
+    \param ctx a pointer to the context that was passed to \c event_publish
+    */
     void (*fun)(struct event *evt, void *ctx);
 };
 
-/*
-initialize an event handler
-fun is a function to be called when the subscribed event is published
+/**
+\brief initialize an event handler
+\param handler pointer to \ref event_handler
+\param fun a function to be called when the subscribed event is published
 */
 static inline int event_handler_init(struct event_handler *handler, void (*fun)(struct event *, void *)) {
     if (!handler) return -1;
@@ -37,8 +43,10 @@ static inline int event_handler_init(struct event_handler *handler, void (*fun)(
     return 0;
 }
 
-/*
-initialize an event
+/**
+\brief initialize a \ref event
+\param evt pointer to \ref event
+\return 0 if successful
 */
 static inline int event_init(struct event *evt) {
     if (!evt) return -1;
@@ -46,25 +54,35 @@ static inline int event_init(struct event *evt) {
     return 0;
 }
 
-/*
-attach an event handler to an event
+/**
+\brief attach an \ref event_handler to an \ref event
+\param evt pointer to initialized \ref event
+\param handler pointer to initialized \ref event_handler
+\return 0 if successful
 */
 static inline int event_subscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
     return list_append(&evt->handlers, &handler->element);
 }
 
-/*
-detach an event handler from an event
+/**
+\brief detach an \ref event_handler from an \ref event
+\param evt pointer to initialized \ref event
+\param handler pointer to initialized \ref event_handler
+\return 0 if the handler was unsubscribed
 */
 static inline int event_unsubscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
     return list_remove(&evt->handlers, &handler->element);
 }
 
-/*
-publish an event
-ctx will be passed to the handler functions of subscribed handlers
+/**
+\brief publish an \ref event
+\details all subscribed events will have their handler functions called in an unspecified order
+\sa \ref event_handler_init and \ref event_subscribe
+\param evt pointer to initialized \ref event
+\param ctx pointer to context to pass to subscribed \ref event_handler functions
+\return 0 if successful
 */
 static inline int event_publish(struct event *evt, void *ctx) {
     if (!evt) return -1;

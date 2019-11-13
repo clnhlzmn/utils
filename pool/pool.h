@@ -1,3 +1,7 @@
+/**
+\file pool.h
+\brief A generic memory pool allocator.
+*/
 
 #ifndef POOL_H
 #define POOL_H
@@ -6,6 +10,12 @@
 #include <stdbool.h>
 #include "slist.h"
 
+/**
+\brief Generates the pool api
+\param name a name for the api with the given type and size
+\param type the type of objects to allocate
+\param size the maximum number of objects that can be allocated
+*/
 #define POOL(name, type, size)                                                  \
 struct pool_##name {                                                            \
     union pool_##name##_private {                                               \

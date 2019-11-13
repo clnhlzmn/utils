@@ -1,0 +1,33 @@
+/**
+\mainpage utils
+
+A collection of simple utilities for microcontrollers.
+
+\section button button
+Software debouncing, edge detection, and button press, release, hold, and repeat events
+See \ref button.h.
+
+\section crc crc
+Cyclic redundancy code calculation.
+See \ref crc16.h.
+
+\section event event
+Publish subscribe pattern.
+See \ref event.h.
+
+\section list list
+Double and singly linked intrusive lists.
+See \ref list.h and \ref slist.h.
+
+\section moving average filter
+A simple moving average filter.
+See \ref moving_average_filter.h.
+
+\section pool
+A generic memory pool allocator.
+See \ref pool.h.
+
+\section queue
+A generic FIFO queue.
+See \ref queue.h.
+*/

@@ -1,10 +1,16 @@
-
+/**
+\file moving_average_filter.h
+\brief A generic moving average filter.
+*/
 
 #ifndef MOVING_AVERAGE_FILTER_H
 #define MOVING_AVERAGE_FILTER_H
 
 #include <stddef.h>
 
+/**
+\brief generates definitions of moving average filter types and functions
+*/
 #define MOVING_AVERAGE_FILTER(name, type, size)                                         \
 struct maf_##name {                                                                     \
     type samples[size];                                                                 \

@@ -1,4 +1,7 @@
-
+/**
+\file queue.h
+\brief A generic FIFO queue.
+*/
 
 #ifndef QUEUE_H
 #define QUEUE_H
@@ -29,6 +32,12 @@ queue_*_foreach takes a function pointer and pointer to some context and for eac
 
 */
 
+/**
+\brief Generates the queue api
+\param name a name for the api with the given type and size
+\param type the type of data to store in the queue
+\param size the max number of data elements
+*/
 #define QUEUE(name, type, size)                                                         \
 struct queue_##name {                                                                   \
     type storage[size];                                                                 \

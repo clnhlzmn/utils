@@ -1,7 +1,7 @@
 
 /**
-@file
-@brief Structures and functions for handling software debouncing, edge detection, and button press, release, hold, and repeat events.
+\file button.h
+\brief Structures and functions for handling software debouncing, edge detection, and button press, release, hold, and repeat events.
 */
 
 #ifndef BUTTON_UTILS_H
@@ -10,7 +10,7 @@
 #include <stdbool.h>
 
 /**
-@brief a software debouncer
+\brief a software debouncer
 */
 struct debouncer {
     bool current_value;
@@ -21,10 +21,10 @@ struct debouncer {
 static inline void debouncer_set_count(struct debouncer *self, int count);
 
 /**
-@brief initialize a debouncer
-@param self pointer to instance
-@param count how many times input state should repeat before output state changes
-@param initial initial output state
+\brief initialize a debouncer
+\param self pointer to instance
+\param count how many times input state should repeat before output state changes
+\param initial initial output state
 */
 static inline void debouncer_init(
     struct debouncer *self, int count, bool initial) {

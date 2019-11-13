@@ -1,3 +1,7 @@
+/**
+\file slist.h
+\brief An intrusive singly linked list.
+*/
 
 #ifndef SLIST_H
 #define SLIST_H
@@ -5,11 +9,13 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-/*members and functions marked SLIST_PRIVATE are not part of the list interface*/
-#define SLIST_PRIVATE
-
+/**
+\brief slist element state
+\details embed \ref slist_element in structs that will be elements of an \ref slist
+*/
 struct slist_element {
-    SLIST_PRIVATE struct slist_element *next;
+    /**\brief pointer to next element*/
+    struct slist_element *next;
 };
 
 /*
@@ -44,7 +50,7 @@ static inline int slist_element_remove_after(struct slist_element *after) {
 }
 
 struct slist {
-    SLIST_PRIVATE struct slist_element head;
+    struct slist_element head;
 };
 
 /*
@@ -122,7 +128,7 @@ static inline int slist_remove_head(struct slist *list, struct slist_element **e
 }
 
 struct slist_iterator {
-    SLIST_PRIVATE struct slist_element *current;
+    struct slist_element *current;
 };
 
 /*
