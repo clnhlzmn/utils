@@ -87,7 +87,8 @@ static inline void queue_##name##_foreach(volatile struct queue_##name *q,      
     for (size_t i = 0; i < q->count; ++i) {                                             \
         if (fun(&q->storage[(q->read + i + 1) % size], ctx) != 0) break;                \
     }                                                                                   \
-}
+}                                                                                       \
+struct queue_iterator_##name
 
 
 #endif //QUEUE_H
