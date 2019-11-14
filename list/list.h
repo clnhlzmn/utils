@@ -34,7 +34,7 @@ static inline int list_element_init(struct list_element *element) {
 /**
 \brief checks if an element is in a list
 \param element the element to check for list membership
-\param[out] in_list pointer to location where result shold be written
+\param[out] in_list pointer to location where result should be written
 \return 0 if successful
 */
 static inline int list_element_in_list(struct list_element *element, bool *in_list) {
@@ -126,7 +126,7 @@ static inline int list_is_empty(struct list *list, bool *is_empty) {
 
 /**
 \brief prepends an element to a list
-\param list pointer to the list to prepend to
+\param list pointer to the list on which to prepend
 \param element pointer to element to prepend
 \return 0 if successful
 */
@@ -169,6 +169,7 @@ struct list_iterator {
 
 /**
 \brief initialize a list iterator
+\details the iterator will point to one before the first element of \p list or, equivalently, to one after the last element of \p list
 \param it pointer to the iterator to initialize
 \param list pointer to the list over which to iterate
 \return 0 if successful
