@@ -9,8 +9,8 @@
 #include <stdbool.h>
 
 /**
-/brief list element state
-/details embed a \ref list_element member in a struct that will be a member of a \ref list
+\brief list element state
+\details embed a \ref list_element member in a struct that will be a member of a \ref list
 */
 struct list_element {
     /**\brief pointer to last element*/
@@ -207,6 +207,23 @@ static inline int list_iterator_previous(struct list_iterator *it, struct list_e
     it->current = it->current->prev;
     *element = it->current;
     return 0;
+}
+
+/**
+\brief checks if an element is contained in a list
+\param list the list to check
+\param element the element to look for
+\return true if \p element is in \p list, false otherwise
+*/
+static inline bool list_contains(struct list *list, struct list_element *element) {
+    if (!list || !element) return false;
+    struct list_iterator it;
+    list_iterator_init(&it, list);
+    struct list_element *current;
+    while (list_iterator_next(&it, &current) == 0) {
+        if (current == element) return true;
+    }
+    return false;
 }
 
 #endif //LIST_H

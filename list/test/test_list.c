@@ -42,12 +42,18 @@ int main(void) {
     assert(list_is_empty(&my_list, &is_empty) == 0);
     assert(!is_empty);
     
+    
     //another element
     struct my_list_element e1;
     list_element_init(&e1.element);
     e1.value = 1;
+    assert(!list_contains(&my_list, &e1.element));
     assert(list_append(&my_list, &e1.element) == 0);
     assert(list_append(&my_list, &e1.element) != 0);
+    
+    //list contains
+    assert(list_contains(&my_list, &e0.element));
+    assert(list_contains(&my_list, &e1.element));
     
     //iterator
     struct list_iterator my_iterator;
@@ -64,8 +70,13 @@ int main(void) {
     element = CONTAINER_OF(current, struct my_list_element, element);
     assert(element->value == 1);
     
-    //no more elements
-    assert(list_iterator_next(&my_iterator, &current) != 0);
+    //get first element (list_iterator_previous)
+    assert(list_iterator_previous(&my_iterator, &current) == 0);
+    element = CONTAINER_OF(current, struct my_list_element, element);
+    assert(element->value == 0);
+    
+    //can't go back further
+    assert(list_iterator_previous(&my_iterator, &current) != 0);
     
     //remove element
     assert(list_remove(&my_list, &e1.element) == 0);
