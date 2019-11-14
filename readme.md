@@ -7,6 +7,8 @@
 * easy to use
 * tested
 
+[Complete documentation here](https://clnhlzmn.github.io/utils).
+
 ## button
 
 A single header library for handling software debouncing, edge dectection, and button press/release/hold/repeat events.
