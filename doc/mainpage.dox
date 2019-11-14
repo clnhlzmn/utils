@@ -19,7 +19,7 @@ See \ref event.h.
 Double and singly linked intrusive lists.
 See \ref list.h and \ref slist.h.
 
-\section moving average filter
+\section moving_average_filter moving average filter
 A simple moving average filter.
 See \ref moving_average_filter.h.
 
