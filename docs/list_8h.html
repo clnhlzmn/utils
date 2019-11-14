@@ -84,6 +84,7 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist__element.html">list_element</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">list element state  <a href="structlist__element.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist.html">list</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">list state  <a href="structlist.html#details">More...</a><br /></td></tr>
@@ -95,7 +96,7 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a400690a8b57f95f9f0a982ebd366aa08"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a400690a8b57f95f9f0a982ebd366aa08">list_element_init</a> (struct <a class="el" href="structlist__element.html">list_element</a> *element)</td></tr>
-<tr class="memdesc:a400690a8b57f95f9f0a982ebd366aa08"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize a <a class="el" href="structlist__element.html">list_element</a>  <a href="#a400690a8b57f95f9f0a982ebd366aa08">More...</a><br /></td></tr>
+<tr class="memdesc:a400690a8b57f95f9f0a982ebd366aa08"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialize a <a class="el" href="structlist__element.html" title="list element state ">list_element</a>  <a href="#a400690a8b57f95f9f0a982ebd366aa08">More...</a><br /></td></tr>
 <tr class="separator:a400690a8b57f95f9f0a982ebd366aa08"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a55cc4923cc0c9b69eeac1b31c4512d66"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a55cc4923cc0c9b69eeac1b31c4512d66">list_element_in_list</a> (struct <a class="el" href="structlist__element.html">list_element</a> *element, bool *in_list)</td></tr>
 <tr class="memdesc:a55cc4923cc0c9b69eeac1b31c4512d66"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an element is in a list  <a href="#a55cc4923cc0c9b69eeac1b31c4512d66">More...</a><br /></td></tr>
@@ -130,6 +131,12 @@ Functions</h2></td></tr>
 <tr class="memitem:abbb8248a9a2d384372a1af7974395e33"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#abbb8248a9a2d384372a1af7974395e33">list_iterator_next</a> (struct <a class="el" href="structlist__iterator.html">list_iterator</a> *it, struct <a class="el" href="structlist__element.html">list_element</a> **element)</td></tr>
 <tr class="memdesc:abbb8248a9a2d384372a1af7974395e33"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the next element from an iterator  <a href="#abbb8248a9a2d384372a1af7974395e33">More...</a><br /></td></tr>
 <tr class="separator:abbb8248a9a2d384372a1af7974395e33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72880d52b6d00ab69fe2f6902217d01d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a72880d52b6d00ab69fe2f6902217d01d">list_iterator_previous</a> (struct <a class="el" href="structlist__iterator.html">list_iterator</a> *it, struct <a class="el" href="structlist__element.html">list_element</a> **element)</td></tr>
+<tr class="memdesc:a72880d52b6d00ab69fe2f6902217d01d"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the previous element from an iterator  <a href="#a72880d52b6d00ab69fe2f6902217d01d">More...</a><br /></td></tr>
+<tr class="separator:a72880d52b6d00ab69fe2f6902217d01d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecaed497303b8cba48a944e81d81479c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aecaed497303b8cba48a944e81d81479c">list_contains</a> (struct <a class="el" href="structlist.html">list</a> *<a class="el" href="structlist.html">list</a>, struct <a class="el" href="structlist__element.html">list_element</a> *element)</td></tr>
+<tr class="memdesc:aecaed497303b8cba48a944e81d81479c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an element is contained in a list  <a href="#aecaed497303b8cba48a944e81d81479c">More...</a><br /></td></tr>
+<tr class="separator:aecaed497303b8cba48a944e81d81479c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An intrusive circular doubly linked list. </p>
@@ -177,6 +184,52 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successful </dd></dl>
+
+</div>
+</div>
+<a id="aecaed497303b8cba48a944e81d81479c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aecaed497303b8cba48a944e81d81479c">&#9670;&nbsp;</a></span>list_contains()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static bool list_contains </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlist.html">list</a> *&#160;</td>
+          <td class="paramname"><em>list</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structlist__element.html">list_element</a> *&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>checks if an element is contained in a list </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>the list to check </td></tr>
+    <tr><td class="paramname">element</td><td>the element to look for </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if <code>element</code> is in <code>list</code>, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -250,7 +303,7 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>initialize a <a class="el" href="structlist__element.html">list_element</a> </p>
+<p>initialize a <a class="el" href="structlist__element.html" title="list element state ">list_element</a> </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">element</td><td>pointer to <a class="el" href="structlist__element.html">list_element</a> </td></tr>
@@ -552,6 +605,52 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramdir"></td><td class="paramname">it</td><td>the iterator from which to get the next element </td></tr>
     <tr><td class="paramdir">[out]</td><td class="paramname">element</td><td>pointer to a location where the next element pointer should be written </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if successful </dd></dl>
+
+</div>
+</div>
+<a id="a72880d52b6d00ab69fe2f6902217d01d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72880d52b6d00ab69fe2f6902217d01d">&#9670;&nbsp;</a></span>list_iterator_previous()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int list_iterator_previous </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlist__iterator.html">list_iterator</a> *&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structlist__element.html">list_element</a> **&#160;</td>
+          <td class="paramname"><em>element</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>gets the previous element from an iterator </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">it</td><td>the iterator from which to get the previous element </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">element</td><td>pointer to a location where the previous element pointer should be written </td></tr>
   </table>
   </dd>
 </dl>
