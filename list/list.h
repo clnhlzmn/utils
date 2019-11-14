@@ -195,4 +195,18 @@ static inline int list_iterator_next(struct list_iterator *it, struct list_eleme
     return 0;
 }
 
+/**
+\brief gets the previous element from an iterator
+\param it the iterator from which to get the previous element
+\param[out] element pointer to a location where the previous element pointer should be written
+\return 0 if successful
+*/
+static inline int list_iterator_previous(struct list_iterator *it, struct list_element **element) {
+    if (!it || !element) return -1;
+    if (it->current->prev == &it->list->head) return -1;
+    it->current = it->current->prev;
+    *element = it->current;
+    return 0;
+}
+
 #endif //LIST_H
