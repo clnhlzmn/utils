@@ -33,6 +33,7 @@ static inline int list_element_init(struct list_element *element) {
 
 /**
 \brief checks if an element is in a list
+\param element the element to check for list membership
 \param[out] in_list pointer to location where result shold be written
 \return 0 if successful
 */
@@ -77,7 +78,7 @@ static inline int list_element_insert_before(struct list_element *before, struct
 }
 
 /**
-\brief removes \ref element from a list
+\brief removes \p element from a list
 \param element \ref list_element to remove
 \return 0 if successful
 */

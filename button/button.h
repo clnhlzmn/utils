@@ -77,7 +77,7 @@ enum edge_detector_edge {
 };
 
 /**
-edge detector state
+\brief edge detector state
 */
 struct edge_detector {
     bool value;
@@ -119,7 +119,7 @@ static inline bool edge_detector_get_value(struct edge_detector *self) {
 }
 
 /**
-button events
+\brief button events
 */
 enum button_event {
     BUTTON_EVENT_PRESS,
@@ -128,7 +128,7 @@ enum button_event {
 };
 
 /**
-internal button timer state
+\brief internal button timer state
 */
 enum button_timer_state {
     BUTTON_TIMER_IDLE,
@@ -137,7 +137,7 @@ enum button_timer_state {
 };
 
 /**
-button state
+\brief button state
 */
 struct button {
     struct edge_detector edge_detector;
