@@ -226,4 +226,27 @@ static inline bool list_contains(struct list *list, struct list_element *element
     return false;
 }
 
+/**
+\brief removes all elments from a list
+\param list the list to clear
+\return 0 if all elements were removed
+*/
+static inline int list_clear(struct list *list) {
+    if (!list) return -1;
+    struct list_iterator it;
+    list_iterator_init(&it, list);
+    struct list_element *last = NULL;
+    struct list_element *elem;
+    while (list_iterator_next(&it, &elem) == 0) {
+        if (last != NULL) {
+            list_remove(list, last);
+        }
+        last = elem;
+    }
+    if (last != NULL) {
+        list_remove(list, last);
+    }
+    return 0;
+}
+
 #endif //LIST_H

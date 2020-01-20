@@ -97,6 +97,13 @@ int main(void) {
     //try to remove again
     assert(list_remove(&my_list, &e0.element) != 0);
     
+    list_append(&my_list, &e0.element);
+    list_append(&my_list, &e1.element);
+    
+    assert(list_clear(&my_list) == 0);
+    list_is_empty(&my_list, &is_empty);
+    assert(is_empty == true);
+    
     printf("tests passed\r\n");
     return 0;
 }
