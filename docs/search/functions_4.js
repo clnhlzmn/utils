@@ -1,6 +1,7 @@
 var searchData=
 [
   ['list_5fappend',['list_append',['../list_8h.html#aee702efc6982e79ebbb5232eb4ad0417',1,'list.h']]],
+  ['list_5fclear',['list_clear',['../list_8h.html#aa2d8faafeb7b0f899d62cc2810d69990',1,'list.h']]],
   ['list_5fcontains',['list_contains',['../list_8h.html#aecaed497303b8cba48a944e81d81479c',1,'list.h']]],
   ['list_5felement_5fin_5flist',['list_element_in_list',['../list_8h.html#a55cc4923cc0c9b69eeac1b31c4512d66',1,'list.h']]],
   ['list_5felement_5finit',['list_element_init',['../list_8h.html#a400690a8b57f95f9f0a982ebd366aa08',1,'list.h']]],

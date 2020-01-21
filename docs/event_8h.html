@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>utils: C:/code/utils/event/event.h File Reference</title>
+<title>utils: event/event.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -273,6 +273,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>attach an <a class="el" href="structevent__handler.html">event_handler</a> to an <a class="el" href="index.html#event">event</a> </p>
+<dl class="section note"><dt>Note</dt><dd>if one subscribes to an event from within a handler for that event the newly subscribed handler won't be called until the next time that event is published </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">evt</td><td>pointer to initialized <a class="el" href="index.html#event">event</a> </td></tr>
@@ -319,6 +320,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>detach an <a class="el" href="structevent__handler.html">event_handler</a> from an <a class="el" href="index.html#event">event</a> </p>
+<dl class="section note"><dt>Note</dt><dd>unsubscribing a handler from within that handler's callback function is undefined </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">evt</td><td>pointer to initialized <a class="el" href="index.html#event">event</a> </td></tr>

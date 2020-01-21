@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>utils: C:/code/utils/list/list.h File Reference</title>
+<title>utils: list/list.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -137,6 +137,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aecaed497303b8cba48a944e81d81479c"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aecaed497303b8cba48a944e81d81479c">list_contains</a> (struct <a class="el" href="structlist.html">list</a> *<a class="el" href="structlist.html">list</a>, struct <a class="el" href="structlist__element.html">list_element</a> *element)</td></tr>
 <tr class="memdesc:aecaed497303b8cba48a944e81d81479c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an element is contained in a list  <a href="#aecaed497303b8cba48a944e81d81479c">More...</a><br /></td></tr>
 <tr class="separator:aecaed497303b8cba48a944e81d81479c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d8faafeb7b0f899d62cc2810d69990"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#aa2d8faafeb7b0f899d62cc2810d69990">list_clear</a> (struct <a class="el" href="structlist.html">list</a> *<a class="el" href="structlist.html">list</a>)</td></tr>
+<tr class="memdesc:aa2d8faafeb7b0f899d62cc2810d69990"><td class="mdescLeft">&#160;</td><td class="mdescRight">removes all elments from a list  <a href="#aa2d8faafeb7b0f899d62cc2810d69990">More...</a><br /></td></tr>
+<tr class="separator:aa2d8faafeb7b0f899d62cc2810d69990"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An intrusive circular doubly linked list. </p>
@@ -184,6 +187,41 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successful </dd></dl>
+
+</div>
+</div>
+<a id="aa2d8faafeb7b0f899d62cc2810d69990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2d8faafeb7b0f899d62cc2810d69990">&#9670;&nbsp;</a></span>list_clear()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int list_clear </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structlist.html">list</a> *&#160;</td>
+          <td class="paramname"><em>list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>removes all elments from a list </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">list</td><td>the list to clear </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 if all elements were removed </dd></dl>
 
 </div>
 </div>
@@ -739,6 +777,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>removes an element from a list </p>
+<dl class="section note"><dt>Note</dt><dd>removing the current element of an iterator will invalidate that iterator </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">list</td><td>the list from which to remove </td></tr>

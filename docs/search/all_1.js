@@ -9,5 +9,5 @@ var searchData=
   ['button_5fset_5frepeat_5ftime',['button_set_repeat_time',['../button_8h.html#a5874bdf04dec24d4cde2fdd6557d932b',1,'button.h']]],
   ['button_5ftimer_5fstate',['button_timer_state',['../button_8h.html#acf20e81e3fc1135427822a68bbdaadb8',1,'button.h']]],
   ['button_5fupdate',['button_update',['../button_8h.html#a54ab288b4619ba71f2870e70b4e66240',1,'button.h']]],
-  ['button',['button',['../md__c_1_code_utils_button_readme.html',1,'']]]
+  ['button',['button',['../md_button_readme.html',1,'']]]
 ];
