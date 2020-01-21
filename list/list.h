@@ -148,6 +148,7 @@ static inline int list_append(struct list *list, struct list_element *element) {
 
 /**
 \brief removes an element from a list
+\note removing the current element of an iterator will invalidate that iterator
 \param list the list from which to remove
 \param element the element to remove
 \return 0 if successful

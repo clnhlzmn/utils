@@ -56,17 +56,22 @@ static inline int event_init(struct event *evt) {
 
 /**
 \brief attach an \ref event_handler to an \ref event
+\note if one subscribes to an event from within 
+a handler for that event the newly subscribed handler
+won't be called until the next time that event is published
 \param evt pointer to initialized \ref event
 \param handler pointer to initialized \ref event_handler
 \return 0 if successful
 */
 static inline int event_subscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
-    return list_append(&evt->handlers, &handler->element);
+    return list_prepend(&evt->handlers, &handler->element);
 }
 
 /**
 \brief detach an \ref event_handler from an \ref event
+\note unsubscribing a handler from within that handler's
+callback function is undefined
 \param evt pointer to initialized \ref event
 \param handler pointer to initialized \ref event_handler
 \return 0 if the handler was unsubscribed
