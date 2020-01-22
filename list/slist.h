@@ -23,11 +23,7 @@ struct slist_element {
 \param element pointer to element to initialize
 \return 0 if successful
 */
-static inline int slist_element_init(struct slist_element *element) {
-    if (!element) return -1;
-    element->next = NULL;
-    return 0;
-}
+int slist_element_init(struct slist_element *element);
 
 /**
 \brief insert an element after another
@@ -35,24 +31,14 @@ static inline int slist_element_init(struct slist_element *element) {
 \param element the element to insert
 \return 0 if the insert was successful
 */
-static inline int slist_element_insert_after(struct slist_element *after, struct slist_element *element) {
-    if (!after || !element) return -1;
-    element->next = after->next;
-    after->next = element;
-    return 0;
-}
+int slist_element_insert_after(struct slist_element *after, struct slist_element *element);
 
 /**
 \brief removes an element following another
 \param after the element after which to remove
 \return 0 if an element was removed
 */
-static inline int slist_element_remove_after(struct slist_element *after) {
-    if (!after) return -1;
-    if (!after->next) return 0;
-    after->next = after->next->next;
-    return 0;
-}
+int slist_element_remove_after(struct slist_element *after);
 
 /**
 \brief slist state
@@ -67,10 +53,7 @@ struct slist {
 \param list the \ref slist to initialize
 \return 0 if successful
 */
-static inline int slist_init(struct slist *list) {
-    if (!list) return -1;
-    return slist_element_init(&list->head);
-}
+int slist_init(struct slist *list);
 
 /**
 \brief checks if a list is empty
@@ -78,11 +61,7 @@ static inline int slist_init(struct slist *list) {
 \param[out] is_empty pointer to location where result should be stored
 \return 0 if the check was successful
 */
-static inline int slist_is_empty(struct slist *list, bool *is_empty) {
-    if (!list || !is_empty) return -1;
-    *is_empty = list->head.next == NULL;
-    return 0;
-}
+int slist_is_empty(struct slist *list, bool *is_empty);
 
 /**
 \brief prepends element to list
@@ -91,10 +70,7 @@ static inline int slist_is_empty(struct slist *list, bool *is_empty) {
 \return 0 if successful
 \details If \p element is part of a list then that list will be corrupted.
 */
-static inline int slist_prepend(struct slist *list, struct slist_element *element) {
-    if (!list) return -1;
-    return slist_element_insert_after(&list->head, element);
-}
+int slist_prepend(struct slist *list, struct slist_element *element);
 
 /**
 \brief appends an element to a list
@@ -104,14 +80,7 @@ static inline int slist_prepend(struct slist *list, struct slist_element *elemen
 \details If \p element is part of a list then that list will be corrupted.
 The runtime of this function is linear in the length of \p list.
 */
-static inline int slist_append(struct slist *list, struct slist_element *element) {
-    if (!list || !element) return -1;
-    struct slist_element *last = &list->head;
-    while (last->next) {
-        last = last->next;
-    }
-    return slist_element_insert_after(last, element);
-}
+int slist_append(struct slist *list, struct slist_element *element);
 
 /**
 \brief removes an element from a list
@@ -121,17 +90,7 @@ static inline int slist_append(struct slist *list, struct slist_element *element
 \details If \p element is a member of a list other than \p list then the other list will be corrupted.
 The runtime of this function is linear in the length of \p list.
 */
-static inline int slist_remove(struct slist *list, struct slist_element *element) {
-    if (!list || !element) return -1;
-    struct slist_element *last = &list->head;
-    while (last->next) {
-        if (last->next == element)
-            break;
-        last = last->next;
-    }
-    if (!last->next) return -1;
-    return slist_element_remove_after(last);
-}
+int slist_remove(struct slist *list, struct slist_element *element);
 
 /**
 \brief removes the first element from a list
@@ -139,13 +98,7 @@ static inline int slist_remove(struct slist *list, struct slist_element *element
 \param[out] element location where the removed element should be stored
 \return 0 if an element was removed
 */
-static inline int slist_remove_head(struct slist *list, struct slist_element **element) {
-    if (!element) return -1;
-    bool is_empty;
-    if (slist_is_empty(list, &is_empty) || is_empty) return -1;
-    *element = list->head.next;
-    return slist_element_remove_after(&list->head);
-}
+int slist_remove_head(struct slist *list, struct slist_element **element);
 
 /**
 \brief slist iterator state
@@ -161,11 +114,7 @@ struct slist_iterator {
 \param list the list over which to iterate
 \return 0 if successful
 */
-static inline int slist_iterator_init(struct slist_iterator *it, struct slist *list) {
-    if (!it || !list) return -1;
-    it->current = &list->head;
-    return 0;
-}
+int slist_iterator_init(struct slist_iterator *it, struct slist *list);
 
 /**
 \brief gets the next element from an iterator
@@ -173,12 +122,6 @@ static inline int slist_iterator_init(struct slist_iterator *it, struct slist *l
 \param[out] element the location at which to store the next element
 \return 0 if successful
 */
-static inline int slist_iterator_next(struct slist_iterator *it, struct slist_element **element) {
-    if (!it || !element) return -1;
-    if (!it->current->next) return -1;
-    it->current = it->current->next;
-    *element = it->current;
-    return 0;
-}
+int slist_iterator_next(struct slist_iterator *it, struct slist_element **element);
 
 #endif //SLIST_H
