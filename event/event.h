@@ -4,7 +4,6 @@
 \details depends on \ref list.h
  */ 
 
-
 #ifndef EVENT_H_
 #define EVENT_H_
 
@@ -29,6 +28,8 @@ struct event_handler {
     \param ctx a pointer to the context that was passed to \c event_publish
     */
     void (*fun)(struct event *evt, void *ctx);
+    /** \brief flag used to indicate if the handler should be removed */
+    unsigned char flags;
 };
 
 /**
@@ -36,23 +37,14 @@ struct event_handler {
 \param handler pointer to \ref event_handler
 \param fun a function to be called when the subscribed event is published
 */
-static inline int event_handler_init(struct event_handler *handler, void (*fun)(struct event *, void *)) {
-    if (!handler) return -1;
-    list_element_init(&handler->element);
-    handler->fun = fun;
-    return 0;
-}
+int event_handler_init(struct event_handler *handler, void (*fun)(struct event *, void *));
 
 /**
 \brief initialize a \ref event
 \param evt pointer to \ref event
 \return 0 if successful
 */
-static inline int event_init(struct event *evt) {
-    if (!evt) return -1;
-    list_init(&evt->handlers);
-    return 0;
-}
+int event_init(struct event *evt);
 
 /**
 \brief attach an \ref event_handler to an \ref event
@@ -63,10 +55,7 @@ won't be called until the next time that event is published
 \param handler pointer to initialized \ref event_handler
 \return 0 if successful
 */
-static inline int event_subscribe(struct event *evt, struct event_handler *handler) {
-    if (!evt || !handler) return -1;
-    return list_prepend(&evt->handlers, &handler->element);
-}
+int event_subscribe(struct event *evt, struct event_handler *handler);
 
 /**
 \brief detach an \ref event_handler from an \ref event
@@ -76,10 +65,7 @@ callback function is undefined
 \param handler pointer to initialized \ref event_handler
 \return 0 if the handler was unsubscribed
 */
-static inline int event_unsubscribe(struct event *evt, struct event_handler *handler) {
-    if (!evt || !handler) return -1;
-    return list_remove(&evt->handlers, &handler->element);
-}
+int event_unsubscribe(struct event *evt, struct event_handler *handler);
 
 /**
 \brief publish an \ref event
@@ -89,17 +75,6 @@ static inline int event_unsubscribe(struct event *evt, struct event_handler *han
 \param ctx pointer to context to pass to subscribed \ref event_handler functions
 \return 0 if successful
 */
-static inline int event_publish(struct event *evt, void *ctx) {
-    if (!evt) return -1;
-    struct list_iterator it;
-    list_iterator_init(&it, &evt->handlers);
-    struct list_element *element;
-    while (list_iterator_next(&it, &element) == 0) {
-        struct event_handler *handler = (struct event_handler *)
-            ((char*)element - offsetof(struct event_handler, element));
-        if (handler->fun) handler->fun(evt, ctx);
-    }
-    return 0;
-}
+int event_publish(struct event *evt, void *ctx);
 
 #endif /* EVENT_H_ */
