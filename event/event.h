@@ -28,6 +28,9 @@ struct event_handler {
     \param ctx a pointer to the context that was passed to \c event_publish
     */
     void (*fun)(struct event *evt, void *ctx);
+    /** \brief pointer to keep track of which event to subscribe to 
+    once handler finishes */
+    struct event *evt;
     /** \brief flag used to indicate if the handler should be removed */
     unsigned char flags;
 };

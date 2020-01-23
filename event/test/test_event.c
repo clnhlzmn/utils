@@ -22,7 +22,16 @@ void handler_fun(struct event *evt, void *ctx) {
 void handler_fun_unsubscribe(struct event *evt, void *ctx) {
     assert(evt == current_event);
     assert(ctx == current_handler);
-    event_unsubscribe(evt, (struct event_handler*)ctx);
+    assert(event_unsubscribe(evt, (struct event_handler*)ctx) == 0);
+}
+
+void handler_fun_unsub_then_sub(struct event* evt, void* ctx) {
+    assert(evt == current_event);
+    assert(ctx == current_handler);
+    assert(event_unsubscribe(evt, (struct event_handler*)ctx) == 0);
+    assert(event_subscribe(&event1, (struct event_handler*)ctx) == 0);
+    assert(event_unsubscribe(&event1, (struct event_handler*)ctx) == 0);
+    assert(event_subscribe(&event2, (struct event_handler*)ctx) == 0);
 }
 
 int main(void) {
@@ -63,6 +72,19 @@ int main(void) {
     assert(event_publish(&event1, &handler1) == 0);
     //check that handler1 is already unsubscribed
     assert(event_subscribe(&event1, &handler1) == 0);
+    assert(event_unsubscribe(&event1, &handler1) == 0);
+
+    //reinit handler1 with unsub_then_sub function
+    assert(event_handler_init(&handler1, handler_fun_unsub_then_sub) == 0);
+    //sub handler1 to event1
+    assert(event_subscribe(&event1, &handler1) == 0);
+    current_event = &event1;
+    current_handler = &handler1;
+    //check that handler1 is called
+    assert(event_publish(&event1, &handler1) == 0);
+    //check that handler1 is already subscribed
+    assert(event_subscribe(&event1, &handler1) != 0);
+    assert(handler1.evt == &event2);
     printf("tests passed\r\n");
     return 0;
 }

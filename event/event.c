@@ -1,14 +1,14 @@
 #include "event.h"
 
-enum event_handler_flags {
-    UNSUBSCRIBE = 1,
-    ACTIVE = 2,
+enum {
+    ACTIVE = 1,
 };
 
 int event_handler_init(struct event_handler *handler, void (*fun)(struct event *, void *)) {
     if (!handler) return -1;
     list_element_init(&handler->element);
     handler->fun = fun;
+    handler->evt = NULL;
     handler->flags = 0;
     return 0;
 }
@@ -21,23 +21,40 @@ int event_init(struct event *evt) {
 
 int event_subscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
-    return list_prepend(&evt->handlers, &handler->element);
+    if (handler->flags & ACTIVE && handler->evt) { //already subscribed
+        return -1;
+    } else if (handler->flags & ACTIVE && !handler->evt) { //not subscribed
+        handler->evt = evt;
+        return 0;
+    } else {
+        int err = list_prepend(&evt->handlers, &handler->element);
+        if (!err) handler->evt = evt;
+        return err;
+    }
 }
 
 int event_unsubscribe(struct event *evt, struct event_handler *handler) {
     if (!evt || !handler) return -1;
-    if (handler->flags & ACTIVE) {
-        handler->flags |= UNSUBSCRIBE;
+    if (handler->flags & ACTIVE && handler->evt) { //subscribed
+        handler->evt = NULL;
         return 0;
+    } else if (handler->flags & ACTIVE && !handler->evt) { //not subscribed
+        return -1;
     } else {
-        return list_remove(&evt->handlers, &handler->element);
+        int err = list_remove(&evt->handlers, &handler->element);
+        if (!err) handler->evt = NULL;
+        return err;
     }
 }
 
-static void event_unsubscribe_if_flag_set(struct event *evt, struct event_handler *handler) {
-    if (handler && handler->flags & UNSUBSCRIBE) {
-        list_remove(&evt->handlers, &handler->element);
-        handler->flags &= ~UNSUBSCRIBE;
+static void event_update_subscription(struct event *evt, struct event_handler *handler) {
+    if (!handler) return;
+    if (!handler->evt) {
+        event_unsubscribe(evt, handler);
+    } if (handler->evt && handler->evt != evt) {
+        struct event* new_evt = handler->evt;
+        event_unsubscribe(evt, handler);
+        event_subscribe(new_evt, handler);
     }
 }
 
@@ -53,9 +70,9 @@ int event_publish(struct event *evt, void *ctx) {
         handler->flags |= ACTIVE;
         if (handler->fun) handler->fun(evt, ctx);
         handler->flags &= ~ACTIVE;
-        event_unsubscribe_if_flag_set(evt, last_handler);
+        event_update_subscription(evt, last_handler);
         last_handler = handler;
     }
-    event_unsubscribe_if_flag_set(evt, last_handler);
+    event_update_subscription(evt, last_handler);
     return 0;
 }
