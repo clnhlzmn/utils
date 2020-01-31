@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['slist',['slist',['../structslist.html',1,'']]],
-  ['slist_5felement',['slist_element',['../structslist__element.html',1,'']]],
-  ['slist_5fiterator',['slist_iterator',['../structslist__iterator.html',1,'']]]
+  ['queue_5fname',['queue_NAME',['../structqueue___n_a_m_e.html',1,'']]]
 ];

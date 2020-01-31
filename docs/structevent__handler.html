@@ -80,9 +80,17 @@ Data Fields</h2></td></tr>
 struct <a class="el" href="structlist__element.html">list_element</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structevent__handler.html#af605ff18f9bab77174e88346d40e2822">element</a></td></tr>
 <tr class="memdesc:af605ff18f9bab77174e88346d40e2822"><td class="mdescLeft">&#160;</td><td class="mdescRight">list element for attaching handler to an event <br /></td></tr>
 <tr class="separator:af605ff18f9bab77174e88346d40e2822"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43e0f19eea36dbb3d715444c1679e7ec"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structevent__handler.html#a43e0f19eea36dbb3d715444c1679e7ec">fun</a> )(struct <a class="el" href="structevent.html">event</a> *evt, void *ctx)</td></tr>
+<tr class="memitem:a43e0f19eea36dbb3d715444c1679e7ec"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structevent__handler.html#a43e0f19eea36dbb3d715444c1679e7ec">fun</a> )(struct <a class="el" href="structevent.html">event</a> *<a class="el" href="structevent__handler.html#a31debe8decf5b78fcab41e8dc252df28">evt</a>, void *ctx)</td></tr>
 <tr class="memdesc:a43e0f19eea36dbb3d715444c1679e7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">handler function pointer  <a href="#a43e0f19eea36dbb3d715444c1679e7ec">More...</a><br /></td></tr>
 <tr class="separator:a43e0f19eea36dbb3d715444c1679e7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31debe8decf5b78fcab41e8dc252df28"><td class="memItemLeft" align="right" valign="top"><a id="a31debe8decf5b78fcab41e8dc252df28"></a>
+struct <a class="el" href="structevent.html">event</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structevent__handler.html#a31debe8decf5b78fcab41e8dc252df28">evt</a></td></tr>
+<tr class="memdesc:a31debe8decf5b78fcab41e8dc252df28"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to keep track of which event to subscribe to once handler finishes <br /></td></tr>
+<tr class="separator:a31debe8decf5b78fcab41e8dc252df28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78ac89a4a0f57ffa7c2ecf31749aa390"><td class="memItemLeft" align="right" valign="top"><a id="a78ac89a4a0f57ffa7c2ecf31749aa390"></a>
+unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structevent__handler.html#a78ac89a4a0f57ffa7c2ecf31749aa390">flags</a></td></tr>
+<tr class="memdesc:a78ac89a4a0f57ffa7c2ecf31749aa390"><td class="mdescLeft">&#160;</td><td class="mdescRight">flag used to indicate if the handler should be removed <br /></td></tr>
+<tr class="separator:a78ac89a4a0f57ffa7c2ecf31749aa390"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>event handler state </p>
@@ -94,7 +102,7 @@ struct <a class="el" href="structlist__element.html">list_element</a>&#160;</td>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void(* fun) (struct <a class="el" href="structevent.html">event</a> *evt, void *ctx)</td>
+          <td class="memname">void(* fun) (struct <a class="el" href="structevent.html">event</a> *<a class="el" href="structevent__handler.html#a31debe8decf5b78fcab41e8dc252df28">evt</a>, void *ctx)</td>
         </tr>
       </table>
 </div><div class="memdoc">

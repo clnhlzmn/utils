@@ -50,6 +50,7 @@ var menudata={children:[
 {text:"e",url:"globals_func.html#index_e"},
 {text:"l",url:"globals_func.html#index_l"},
 {text:"p",url:"globals_func.html#index_p"},
+{text:"q",url:"globals_func.html#index_q"},
 {text:"s",url:"globals_func.html#index_s"}]},
 {text:"Enumerations",url:"globals_enum.html"},
 {text:"Macros",url:"globals_defs.html"}]}]}]}

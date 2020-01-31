@@ -48,46 +48,102 @@ struct queue_##name {                                                           
     /*number of items in the queue*/                                                    \
     size_t count;                                                                       \
 };                                                                                      \
-static inline void queue_##name##_init(volatile struct queue_##name *q) {               \
-    q->read = 0;                                                                        \
-    q->write = 0;                                                                       \
-    q->count = 0;                                                                       \
+static inline int queue_##name##_init(volatile struct queue_##name *self) {             \
+    if (!self) return -1;                                                               \
+    self->read = 0;                                                                     \
+    self->write = 0;                                                                    \
+    self->count = 0;                                                                    \
+    return 0;                                                                           \
 }                                                                                       \
-static inline int queue_##name##_push(volatile struct queue_##name *q,                  \
+static inline int queue_##name##_push(volatile struct queue_##name *self,               \
                                       const volatile type *item) {                      \
-    if (q->count < size) {                                                              \
-        size_t next = (q->write + 1) % size;                                            \
-        q->storage[next] = *item;                                                       \
-        q->write = next;                                                                \
-        q->count++;                                                                     \
+    if (!self || !item) return -1;                                                      \
+    if (self->count < size) {                                                           \
+        size_t next = (self->write + 1) % size;                                         \
+        self->storage[next] = *item;                                                    \
+        self->write = next;                                                             \
+        self->count++;                                                                  \
         return 0;                                                                       \
     } else {                                                                            \
         return -1;                                                                      \
     }                                                                                   \
 }                                                                                       \
-static inline int queue_##name##_pop(volatile struct queue_##name *q,                   \
+static inline int queue_##name##_pop(volatile struct queue_##name *self,                \
                                      volatile type *item) {                             \
-    if (q->count > 0) {                                                                 \
-        size_t next = (q->read + 1) % size;                                             \
-        *item = q->storage[next];                                                       \
-        q->read = next;                                                                 \
-        q->count--;                                                                     \
+    if (!self || !item) return -1;                                                      \
+    if (self->count > 0) {                                                              \
+        size_t next = (self->read + 1) % size;                                          \
+        *item = self->storage[next];                                                    \
+        self->read = next;                                                              \
+        self->count--;                                                                  \
         return 0;                                                                       \
     } else {                                                                            \
         return -1;                                                                      \
     }                                                                                   \
 }                                                                                       \
-static inline size_t queue_##name##_count(const volatile struct queue_##name *q) {      \
-    return q->count;                                                                    \
+static inline size_t queue_##name##_count(const volatile struct queue_##name *self) {   \
+    if (!self) return 0;                                                                \
+    return self->count;                                                                 \
 }                                                                                       \
-static inline void queue_##name##_foreach(volatile struct queue_##name *q,              \
+static inline void queue_##name##_foreach(volatile struct queue_##name *self,           \
                                           int (*fun)(volatile type *, volatile void *), \
                                           volatile void *ctx) {                         \
+    if (!self) return;                                                                  \
     if (fun == NULL) return;                                                            \
-    for (size_t i = 0; i < q->count; ++i) {                                             \
-        if (fun(&q->storage[(q->read + i + 1) % size], ctx) != 0) break;                \
+    for (size_t i = 0; i < self->count; ++i) {                                          \
+        if (fun(&self->storage[(self->read + i + 1) % size], ctx) != 0) break;          \
     }                                                                                   \
 }
+
+#ifdef DOXYGEN
+QUEUE(NAME, TYPE, SIZE);
+/**
+\struct queue_NAME
+\brief instance type generated by \ref QUEUE with \c name set to \a NAME, \c type set to \a TYPE, and \c size set to \a SIZE
+
+\var queue_NAME::storage
+\brief PRIVATE \n an array for storing elements in the queue
+
+\var queue_NAME::read 
+\brief PRIVATE \n index to the next item to be read
+
+\var queue_NAME::write
+\brief PRIVATE \n index to the next location to write an item
+
+\var queue_NAME::count
+\brief PRIVATE \n the number of items in the queue
+
+\fn int queue_NAME_init(volatile struct queue_NAME *self)
+\brief init function generated by \ref QUEUE with \c name set to \a NAME, \c type set to \a TYPE, and \c size set to \a SIZE
+\param self the \ref queue_NAME to initialize
+\return 0 if successful
+
+\fn int queue_NAME_push(volatile struct queue_NAME *self, const volatile TYPE *item)
+\brief push an item onto the queue
+\param self the \ref queue_NAME on which to push the item
+\param item pointer to the item to push
+\return 0 if successful
+
+\fn int queue_NAME_pop(volatile struct queue_NAME *self, volatile TYPE *item)
+\brief pop an item from the queue
+\param self the \ref queue_NAME from which to pop the item
+\param item pointer the location to which the item should be copied
+\return 0 if successful
+
+\fn size_t queue_NAME_count(const volatile struct queue_NAME *self)
+\brief get the number of items in the queue
+\param self the \ref queue_NAME from which to get the item count
+\return the item count
+
+\fn void queue_NAME_foreach(volatile struct queue_NAME *self, int (*fun)(volatile TYPE *, volatile void *), volatile void *ctx)
+\brief calls \c fun for each item in the queue
+\param self the queue to traverse
+\param fun a function pointer that takes a pointer to \a TYPE and a pointer to void \n 
+if \c fun returns 0 then the traversal will continue otherwise it will stop
+\param ctx a pointer to arbitrary context that gets passed as the second argument to \c fun for each item in the queue
+
+*/
+#endif
 
 
 #endif //QUEUE_H

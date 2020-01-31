@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['count',['count',['../structqueue___n_a_m_e.html#ae11b3deb3de3df7dc48e439074023e35',1,'queue_NAME']]],
   ['crc16',['crc16',['../crc16_8h.html#a8d96e4fc219908ebbed09f7cd58fc623',1,'crc16.c']]],
   ['crc16_2eh',['crc16.h',['../crc16_8h.html',1,'']]],
   ['crc16_5ffinalize',['CRC16_FINALIZE',['../crc16_8h.html#a82050d7aca19ec5b126ea40e7b397a37',1,'crc16.h']]],
