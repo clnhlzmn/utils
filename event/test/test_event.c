@@ -4,7 +4,7 @@
 
 #include "../event.h"
 
-struct event event1;
+struct event event1 = EVENT_INIT(event1);
 struct event event2;
 
 struct event_handler handler1;
@@ -36,7 +36,6 @@ void handler_fun_unsub_then_sub(struct event* evt, void* ctx) {
 
 int main(void) {
     //init events and handlers
-    assert(event_init(&event1) == 0);
     assert(event_init(&event2) == 0);
     assert(event_handler_init(&handler1, handler_fun) == 0);
     assert(event_handler_init(&handler2, handler_fun) == 0);

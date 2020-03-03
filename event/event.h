@@ -50,6 +50,15 @@ int event_handler_init(struct event_handler *handler, void (*fun)(struct event *
 int event_init(struct event *evt);
 
 /**
+\brief allows static initialization of an \ref event
+\detail
+~~~~~~~~~~~~~~~{.c}
+struct event my_event = EVENT_INIT(my_event);
+~~~~~~~~~~~~~~~
+*/
+#define EVENT_INIT(event) { .handlers = LIST_INIT((event).handlers) }
+
+/**
 \brief attach an \ref event_handler to an \ref event
 \note if one subscribes to an event from within 
 a handler for that event the newly subscribed handler

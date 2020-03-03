@@ -10,7 +10,7 @@ var searchData=
   ['event_2eh',['event.h',['../event_8h.html',1,'']]],
   ['event_5fhandler',['event_handler',['../structevent__handler.html',1,'']]],
   ['event_5fhandler_5finit',['event_handler_init',['../event_8h.html#a27ab9c80990278eb991153ff1f7e0c03',1,'event.c']]],
-  ['event_5finit',['event_init',['../event_8h.html#a71bc953acf9af04d8a6b8a3c4f113a69',1,'event.c']]],
+  ['event_5finit',['event_init',['../event_8h.html#a71bc953acf9af04d8a6b8a3c4f113a69',1,'event_init(struct event *evt):&#160;event.c'],['../event_8h.html#ab40366c8b995ad4142373dc99f7c2ea7',1,'EVENT_INIT():&#160;event.h']]],
   ['event_5fpublish',['event_publish',['../event_8h.html#a8a18ecbbc88cfc8db3ecb44467285024',1,'event.c']]],
   ['event_5fsubscribe',['event_subscribe',['../event_8h.html#a27335b95911a78fe6a8aab8c2a6505d9',1,'event.c']]],
   ['event_5funsubscribe',['event_unsubscribe',['../event_8h.html#a4c559fc88dea07f968262223401e16fc',1,'event.c']]],

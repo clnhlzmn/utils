@@ -16,8 +16,7 @@ struct list my_list2;
 
 int main(void) {
     //initialize
-    assert(list_init(&my_list) == 0);
-    list_init(&my_list2);
+    assert(list_init(&my_list2) == 0);
     
     //check empty
     bool is_empty;
