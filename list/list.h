@@ -66,6 +66,15 @@ struct list {
 };
 
 /**
+\brief allows static initialization of a \ref list
+\detail
+~~~~~~~~~~~~~~~{.c}
+struct list my_list = LIST_INIT(my_list);
+~~~~~~~~~~~~~~~
+*/
+#define LIST_INIT(list) { .head.prev = &(list).head, .head.next = &(list).head }
+
+/**
 \brief initialize a list
 \param list pointer to \ref list
 \return 0 if successful

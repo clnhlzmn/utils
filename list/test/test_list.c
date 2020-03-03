@@ -10,7 +10,7 @@ struct my_list_element {
     int value;
 };
 
-struct list my_list;
+struct list my_list = LIST_INIT(my_list);
 
 struct list my_list2;
 

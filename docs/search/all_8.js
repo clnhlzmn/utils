@@ -11,7 +11,7 @@ var searchData=
   ['list_5felement_5finsert_5fafter',['list_element_insert_after',['../list_8h.html#a66b5dee8e78d53d6d1e2f7f29c0713ee',1,'list.c']]],
   ['list_5felement_5finsert_5fbefore',['list_element_insert_before',['../list_8h.html#a0e4741f8e79a10f2b05f9f98bb6e9e98',1,'list.c']]],
   ['list_5felement_5fremove',['list_element_remove',['../list_8h.html#af40e0f4217aa3c5354d83246efa1ebe2',1,'list.c']]],
-  ['list_5finit',['list_init',['../list_8h.html#a13a2f8192a76683f40e2825f8bf8e980',1,'list.c']]],
+  ['list_5finit',['list_init',['../list_8h.html#a13a2f8192a76683f40e2825f8bf8e980',1,'list_init(struct list *list):&#160;list.c'],['../list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4',1,'LIST_INIT():&#160;list.h']]],
   ['list_5fis_5fempty',['list_is_empty',['../list_8h.html#a2fc4d0a112bb90f77a5e2da6d3d7371e',1,'list.c']]],
   ['list_5fiterator',['list_iterator',['../structlist__iterator.html',1,'']]],
   ['list_5fiterator_5finit',['list_iterator_init',['../list_8h.html#a40826ce342b6de6fd9d4528cebecfea0',1,'list.c']]],

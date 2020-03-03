@@ -68,6 +68,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">list.h File Reference</div>  </div>
@@ -92,6 +93,13 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structlist__iterator.html">list_iterator</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">list iterator state  <a href="structlist__iterator.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a74b9f28d71ffcd1b676161efeb328eb4"><td class="memItemLeft" align="right" valign="top"><a id="a74b9f28d71ffcd1b676161efeb328eb4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(<a class="el" href="structlist.html">list</a>)&#160;&#160;&#160;{ .head.prev = &amp;(<a class="el" href="structlist.html">list</a>).head, .head.next = &amp;(<a class="el" href="structlist.html">list</a>).head }</td></tr>
+<tr class="memdesc:a74b9f28d71ffcd1b676161efeb328eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of a <a class="el" href="index.html#list">list</a>  </p><div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structlist.html">list</a> my_list = <a class="code" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(my_list);</div></div><!-- fragment --> <br /></td></tr>
+<tr class="separator:a74b9f28d71ffcd1b676161efeb328eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
