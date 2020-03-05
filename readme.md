@@ -9,30 +9,30 @@
 
 [Complete documentation here](https://clnhlzmn.github.io/utils).
 
-## button
+## [button](button/readme.md)
 
 A library for handling software debouncing, edge dectection, and button press/release/hold/repeat events.
 
-## crc
+## [crc](crc/readme.md)
 
 A library that performs CRC calculation.
 
-## event
+## [event](event/readme.md)
 
 A library that implements the publish/subscribe pattern.
 
-## list
+## [list](list/readme.md)
 
 A library that implements a doubly linked intrusive list.
 
-## moving_average_filter
+## [moving_average_filter](moving_average_filter/readme.md)
 
 A single header library that implements an efficient, generic, moving average filter.
 
-## pool
+## [pool](pool/readme.md)
 
 A single header generic pool allocator.
 
-## queue
+## [queue](queue/readme.md)
 
 A single header library that implements an efficient, generic, FIFO queue.
