@@ -1,10 +1,10 @@
 # button
 
-A single header library for handling software debouncing, edge dectection, and button press/release/hold/repeat events.
+A library for handling software debouncing, edge dectection, and button press/release/hold/repeat events.
 
 ## how to use
 
-1. Include `button.h` in your project.
+1. Include `button.h` and `button.c` in your project.
 2. Create an event handler function with prototype `void handler(enum button_event, void *);`.
 3. Create an instance of `struct button` and initialize it with the handler function.
 4. Set optional hold/repeat times.
