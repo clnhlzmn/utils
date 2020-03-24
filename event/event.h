@@ -36,6 +36,20 @@ struct event_handler {
 };
 
 /**
+\brief allows static initialization of an \ref event_handler
+\detail
+~~~~~~~~~~~~~~~{.c}
+struct event_handler my_handler = EVENT_HANDLER_INIT(my_handler_fun);
+~~~~~~~~~~~~~~~
+*/
+#define EVENT_HANDLER_INIT(handler_fun) {            \
+    .element = (struct list_element){ NULL, NULL },  \
+    .fun = handler_fun,                              \
+    .evt = NULL,                                     \
+    .flags = 0                                       \
+}
+
+/**
 \brief initialize an event handler
 \param handler pointer to \ref event_handler
 \param fun a function to be called when the subscribed event is published

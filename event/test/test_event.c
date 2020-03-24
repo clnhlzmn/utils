@@ -4,11 +4,13 @@
 
 #include "../event.h"
 
+void handler_fun(struct event *evt, void *ctx);
+
 struct event event1 = EVENT_INIT(event1);
 struct event event2;
 
-struct event_handler handler1;
-struct event_handler handler2;
+struct event_handler handler1 = EVENT_HANDLER_INIT(handler_fun);
+struct event_handler handler2 = EVENT_HANDLER_INIT(handler_fun);
 struct event_handler handler_unsubscribe;
 
 struct event *current_event;
@@ -37,8 +39,8 @@ void handler_fun_unsub_then_sub(struct event* evt, void* ctx) {
 int main(void) {
     //init events and handlers
     assert(event_init(&event2) == 0);
-    assert(event_handler_init(&handler1, handler_fun) == 0);
-    assert(event_handler_init(&handler2, handler_fun) == 0);
+    /*assert(event_handler_init(&handler1, handler_fun) == 0);*/
+    /*assert(event_handler_init(&handler2, handler_fun) == 0);*/
     //sub handler1 to event1
     assert(event_subscribe(&event1, &handler1) == 0);
     assert(event_subscribe(&event1, &handler1) != 0);
