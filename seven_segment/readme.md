@@ -1,0 +1,1 @@
+# Functions for seven segment display encoding

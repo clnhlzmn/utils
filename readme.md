@@ -36,3 +36,7 @@ A single header generic pool allocator.
 ## [queue](queue/readme.md)
 
 A single header library that implements an efficient, generic, FIFO queue.
+
+## [seven segment](seven_segment/readme.md)
+
+Functions for encoding strings for display on a seven segment display.

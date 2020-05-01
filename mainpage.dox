@@ -30,4 +30,8 @@ See \ref pool.h.
 \section queue
 A generic FIFO queue.
 See \ref queue.h.
+
+\section seven_segment seven segment
+Seven segment encoding.
+See \ref seven_segment.h.
 */
