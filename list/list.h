@@ -67,7 +67,7 @@ struct list {
 
 /**
 \brief allows static initialization of a \ref list
-\detail
+\details
 ~~~~~~~~~~~~~~~{.c}
 struct list my_list = LIST_INIT(my_list);
 ~~~~~~~~~~~~~~~

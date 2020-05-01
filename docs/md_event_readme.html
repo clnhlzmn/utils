@@ -66,10 +66,10 @@ $(function() {
 <div class="title">event </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>A single header library that implements the publish/subscribe pattern.</p>
+<div class="textblock"><p>A library that implements the publish/subscribe pattern.</p>
 <h2>how to use</h2>
 <ol type="1">
-<li>Include <code><a class="el" href="event_8h.html" title="an implementation of the publish/subscribe pattern ">event.h</a></code> (<code><a class="el" href="event_8h.html" title="an implementation of the publish/subscribe pattern ">event.h</a></code> requires <code><a class="el" href="list_8h.html" title="An intrusive circular doubly linked list. ">list.h</a></code> so make sure your compiler can find that too).</li>
+<li>Include <code><a class="el" href="event_8h.html" title="an implementation of the publish/subscribe pattern ">event.h</a>/c</code> (<code><a class="el" href="event_8h.html" title="an implementation of the publish/subscribe pattern ">event.h</a>/c</code> requires <code><a class="el" href="list_8h.html" title="An intrusive circular doubly linked list. ">list.h</a>/c</code> so make sure your compiler can find those too).</li>
 <li>Create instances of <code>struct event</code> for each event and initialize them with <code>event_init</code>.</li>
 <li>Create instances of <code>struct <a class="el" href="structevent__handler.html" title="event handler state ">event_handler</a></code>, and corresponding handler functions, for each event handler and initialize them with <code>event_handler_init</code>.</li>
 <li>Subscribe handlers to events that they're interested in with <code>event_subscribe</code>.</li>

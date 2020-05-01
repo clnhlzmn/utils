@@ -96,9 +96,8 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a74b9f28d71ffcd1b676161efeb328eb4"><td class="memItemLeft" align="right" valign="top"><a id="a74b9f28d71ffcd1b676161efeb328eb4"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(<a class="el" href="structlist.html">list</a>)&#160;&#160;&#160;{ .head.prev = &amp;(<a class="el" href="structlist.html">list</a>).head, .head.next = &amp;(<a class="el" href="structlist.html">list</a>).head }</td></tr>
-<tr class="memdesc:a74b9f28d71ffcd1b676161efeb328eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of a <a class="el" href="index.html#list">list</a>  </p><div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structlist.html">list</a> my_list = <a class="code" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(my_list);</div></div><!-- fragment --> <br /></td></tr>
+<tr class="memitem:a74b9f28d71ffcd1b676161efeb328eb4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(<a class="el" href="structlist.html">list</a>)&#160;&#160;&#160;{ .head.prev = &amp;(<a class="el" href="structlist.html">list</a>).head, .head.next = &amp;(<a class="el" href="structlist.html">list</a>).head }</td></tr>
+<tr class="memdesc:a74b9f28d71ffcd1b676161efeb328eb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of a <a class="el" href="index.html#list">list</a>  <a href="#a74b9f28d71ffcd1b676161efeb328eb4">More...</a><br /></td></tr>
 <tr class="separator:a74b9f28d71ffcd1b676161efeb328eb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -151,7 +150,28 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An intrusive circular doubly linked list. </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a74b9f28d71ffcd1b676161efeb328eb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74b9f28d71ffcd1b676161efeb328eb4">&#9670;&nbsp;</a></span>LIST_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LIST_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="structlist.html">list</a></td><td>)</td>
+          <td>&#160;&#160;&#160;{ .head.prev = &amp;(<a class="el" href="structlist.html">list</a>).head, .head.next = &amp;(<a class="el" href="structlist.html">list</a>).head }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allows static initialization of a <a class="el" href="index.html#list">list</a> </p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structlist.html">list</a> my_list = <a class="code" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>(my_list);</div></div><!-- fragment --> 
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a0be53b2c9f1a178b39ab7dd63aae6cc7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0be53b2c9f1a178b39ab7dd63aae6cc7">&#9670;&nbsp;</a></span>list_append()</h2>
 

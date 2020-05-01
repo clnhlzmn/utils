@@ -92,9 +92,11 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:ab40366c8b995ad4142373dc99f7c2ea7"><td class="memItemLeft" align="right" valign="top"><a id="ab40366c8b995ad4142373dc99f7c2ea7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="event_8h.html#ab40366c8b995ad4142373dc99f7c2ea7">EVENT_INIT</a>(<a class="el" href="structevent.html">event</a>)&#160;&#160;&#160;{ .handlers = <a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>((<a class="el" href="structevent.html">event</a>).handlers) }</td></tr>
-<tr class="memdesc:ab40366c8b995ad4142373dc99f7c2ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of an <a class="el" href="index.html#event">event</a>  </p><div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structevent.html">event</a> my_event = <a class="code" href="event_8h.html#ab40366c8b995ad4142373dc99f7c2ea7">EVENT_INIT</a>(my_event);</div></div><!-- fragment --> <br /></td></tr>
+<tr class="memitem:ae521ec2a84b64414f989955739773e9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="event_8h.html#ae521ec2a84b64414f989955739773e9c">EVENT_HANDLER_INIT</a>(handler_fun)</td></tr>
+<tr class="memdesc:ae521ec2a84b64414f989955739773e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of an <a class="el" href="structevent__handler.html">event_handler</a>  <a href="#ae521ec2a84b64414f989955739773e9c">More...</a><br /></td></tr>
+<tr class="separator:ae521ec2a84b64414f989955739773e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab40366c8b995ad4142373dc99f7c2ea7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="event_8h.html#ab40366c8b995ad4142373dc99f7c2ea7">EVENT_INIT</a>(<a class="el" href="structevent.html">event</a>)&#160;&#160;&#160;{ .handlers = <a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>((<a class="el" href="structevent.html">event</a>).handlers) }</td></tr>
+<tr class="memdesc:ab40366c8b995ad4142373dc99f7c2ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">allows static initialization of an <a class="el" href="index.html#event">event</a>  <a href="#ab40366c8b995ad4142373dc99f7c2ea7">More...</a><br /></td></tr>
 <tr class="separator:ab40366c8b995ad4142373dc99f7c2ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -118,7 +120,49 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>an implementation of the publish/subscribe pattern </p>
 <p>depends on <a class="el" href="list_8h.html">list.h</a> </p>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="ae521ec2a84b64414f989955739773e9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae521ec2a84b64414f989955739773e9c">&#9670;&nbsp;</a></span>EVENT_HANDLER_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EVENT_HANDLER_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">handler_fun</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">{            \</div><div class="line">    .element = (<span class="keyword">struct </span><a class="code" href="structlist__element.html">list_element</a>){ NULL, NULL },  \</div><div class="line">    .fun = handler_fun,                              \</div><div class="line">    .evt = NULL,                                     \</div><div class="line">    .flags = 0                                       \</div><div class="line">}</div><div class="ttc" id="structlist__element_html"><div class="ttname"><a href="structlist__element.html">list_element</a></div><div class="ttdoc">list element state </div><div class="ttdef"><b>Definition:</b> list.h:15</div></div>
+</div><!-- fragment -->
+<p>allows static initialization of an <a class="el" href="structevent__handler.html">event_handler</a> </p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structevent__handler.html">event_handler</a> my_handler = <a class="code" href="event_8h.html#ae521ec2a84b64414f989955739773e9c">EVENT_HANDLER_INIT</a>(my_handler_fun);</div></div><!-- fragment --> 
+</div>
+</div>
+<a id="ab40366c8b995ad4142373dc99f7c2ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab40366c8b995ad4142373dc99f7c2ea7">&#9670;&nbsp;</a></span>EVENT_INIT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EVENT_INIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><a class="el" href="structevent.html">event</a></td><td>)</td>
+          <td>&#160;&#160;&#160;{ .handlers = <a class="el" href="list_8h.html#a74b9f28d71ffcd1b676161efeb328eb4">LIST_INIT</a>((<a class="el" href="structevent.html">event</a>).handlers) }</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>allows static initialization of an <a class="el" href="index.html#event">event</a> </p>
+<div class="fragment"><div class="line"><span class="keyword">struct </span><a class="code" href="structevent.html">event</a> my_event = <a class="code" href="event_8h.html#ab40366c8b995ad4142373dc99f7c2ea7">EVENT_INIT</a>(my_event);</div></div><!-- fragment --> 
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="a27ab9c80990278eb991153ff1f7e0c03"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a27ab9c80990278eb991153ff1f7e0c03">&#9670;&nbsp;</a></span>event_handler_init()</h2>
 

@@ -37,7 +37,7 @@ struct event_handler {
 
 /**
 \brief allows static initialization of an \ref event_handler
-\detail
+\details
 ~~~~~~~~~~~~~~~{.c}
 struct event_handler my_handler = EVENT_HANDLER_INIT(my_handler_fun);
 ~~~~~~~~~~~~~~~
@@ -65,7 +65,7 @@ int event_init(struct event *evt);
 
 /**
 \brief allows static initialization of an \ref event
-\detail
+\details
 ~~~~~~~~~~~~~~~{.c}
 struct event my_event = EVENT_INIT(my_event);
 ~~~~~~~~~~~~~~~
