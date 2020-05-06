@@ -19,6 +19,9 @@ struct debouncer {
     int current_count;
 };
 
+#define DEBOUNCER_INIT(initial, count) \
+    {.current_value = initial, .reset_count = count, .current_count = count}
+
 /**
 \brief initialize a debouncer
 \param self pointer to instance
