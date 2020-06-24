@@ -1,3 +1,4 @@
+.PHONY: test
 test: ../list.h ../list.c test_list.c ../slist.h ../slist.c test_slist.c out
 	gcc test_list.c ../list.c -g -o out/list -Wall -Wextra -Werror -std=c99
 	./out/list

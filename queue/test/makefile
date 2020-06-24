@@ -1,5 +1,5 @@
-
-out/test: out test_queue.c ../queue.h
+.PHONY: test
+test: out test_queue.c ../queue.h
 	gcc -Wall -Wextra -Werror -std=c99 -I ../ test_queue.c -o out/test
 	./out/test
 
