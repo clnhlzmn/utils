@@ -1,8 +1,8 @@
 /**
 \file crc16.h
 \brief functions for calculating 16 bit cyclic redundancy codes
- */ 
-
+\CRC-16/IBM/SDLC
+ */
 
 #ifndef CRC16_H
 #define CRC16_H
