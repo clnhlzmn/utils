@@ -12,3 +12,6 @@ add_test(NAME delimiter_first COMMAND delimiter_first)
 
 add_executable(delimiter_last delimiter_last.c ../string_split.c)
 add_test(NAME delimiter_last COMMAND delimiter_last)
+
+add_executable(repeated_delimiter repeated_delimiter.c ../string_split.c)
+add_test(NAME repeated_delimiter COMMAND repeated_delimiter)
