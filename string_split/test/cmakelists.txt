@@ -1,0 +1,14 @@
+cmake_minimum_required (VERSION 3.0)
+project(test_serialization)
+enable_testing()
+include_directories(..)
+add_compile_options(-Wall -Wextra -std=c99 -g)
+
+add_executable(basic_test basic_test.c ../string_split.c)
+add_test(NAME basic_test COMMAND basic_test)
+
+add_executable(delimiter_first delimiter_first.c ../string_split.c)
+add_test(NAME delimiter_first COMMAND delimiter_first)
+
+add_executable(delimiter_last delimiter_last.c ../string_split.c)
+add_test(NAME delimiter_last COMMAND delimiter_last)
