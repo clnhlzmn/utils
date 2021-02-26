@@ -6,7 +6,7 @@ enum pid_flags {
 };
 
 void pid_init(struct pid *self, const struct pid_gain *gains) {
-    self->gain = gain;
+    self->gain = gains;
     self->last_error = 0;
     self->integral = 0;
     self->max_integral = FLT_MAX;
@@ -18,7 +18,7 @@ void pid_set_max_integral(struct pid *self, float value) {
     self->max_integral = value;
 }
 
-void pid_reset(struct pid *self, float value) {
+void pid_reset(struct pid *self) {
     self->integral = 0;
     self->flags &= ~PID_HAVE_LAST_ERROR;
 }
@@ -45,6 +45,6 @@ float pid_update(struct pid *self, float error) {
     return self->output;
 }
 
-float pid_get_output(struct pid *self) {
+float pid_get_output(const struct pid *self) {
     return self->output;
 }

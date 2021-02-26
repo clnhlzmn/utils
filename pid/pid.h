@@ -23,9 +23,9 @@ void pid_init(struct pid *, const struct pid_gain *);
 
 void pid_set_max_integral(struct pid *, float);
 
-void pid_reset(struct pid *, float);
+void pid_reset(struct pid *);
 
-void pid_update(struct pid *, float error);
+float pid_update(struct pid *, float error);
 
 float pid_get_output(const struct pid *);
 
