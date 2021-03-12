@@ -9,12 +9,16 @@
 
 #include "list.h"
 
+struct event_handler;
+
 /**
 \brief event state
 */
 struct event {
-    /** \brief a list of event handlers that are subscribed to this event*/
+    /** \brief PRIVATE a list of event handlers that are subscribed to this event*/
     struct list handlers;
+    /** \brief PRIVATE the current event handler*/
+    struct event_handler *current_handler;
 };
 
 /**
@@ -85,8 +89,6 @@ int event_subscribe(struct event *evt, struct event_handler *handler);
 
 /**
 \brief detach an \ref event_handler from an \ref event
-\note unsubscribing a handler from within that handler's
-callback function is undefined
 \param evt pointer to initialized \ref event
 \param handler pointer to initialized \ref event_handler
 \return 0 if the handler was unsubscribed
@@ -102,5 +104,14 @@ int event_unsubscribe(struct event *evt, struct event_handler *handler);
 \return 0 if successful
 */
 int event_publish(struct event *evt, void *ctx);
+
+/**
+\brief gets the current \ref event_handler
+\details Use this function from within an \ref event_handler callback to get a
+pointer to the current \ref event_handler.
+\param evt pointer to the \ref event
+\return pointer to the current \ref event_handler, or NULL if the event is not currently being published
+*/
+struct event_hander *event_get_current_handler(struct event *evt);
 
 #endif /* EVENT_H_ */

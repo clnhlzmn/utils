@@ -16,6 +16,7 @@ int event_handler_init(struct event_handler *handler, void (*fun)(struct event *
 int event_init(struct event *evt) {
     if (!evt) return -1;
     list_init(&evt->handlers);
+    evt->current_handler = NULL;
     return 0;
 }
 
@@ -68,7 +69,9 @@ int event_publish(struct event *evt, void *ctx) {
         struct event_handler *handler = (struct event_handler *)
             ((char*)element - offsetof(struct event_handler, element));
         handler->flags |= ACTIVE;
+        evt->current_handler = handler;
         if (handler->fun) handler->fun(evt, ctx);
+        handler->current_handler = NULL;
         handler->flags &= ~ACTIVE;
         event_update_subscription(evt, last_handler);
         last_handler = handler;
