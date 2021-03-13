@@ -1,0 +1,20 @@
+cmake_minimum_required (VERSION 3.0)
+project(test_event)
+enable_testing()
+include_directories(.. ../../list)
+add_compile_options(-Wall -Wextra -std=c99 -g)
+
+add_executable(basic_test basic_test.c ../event.c ../../list/list.c)
+add_test(NAME basic_test COMMAND basic_test)
+
+add_executable(two_handlers two_handlers.c ../event.c ../../list/list.c)
+add_test(NAME two_handlers COMMAND two_handlers)
+
+add_executable(unsubscribe_in_handler_function unsubscribe_in_handler_function.c ../event.c ../../list/list.c)
+add_test(NAME unsubscribe_in_handler_function COMMAND unsubscribe_in_handler_function)
+
+add_executable(resubscribe_in_handler_function resubscribe_in_handler_function.c ../event.c ../../list/list.c)
+add_test(NAME resubscribe_in_handler_function COMMAND resubscribe_in_handler_function)
+
+add_executable(static_initialization static_initialization.c ../event.c ../../list/list.c)
+add_test(NAME static_initialization COMMAND static_initialization)

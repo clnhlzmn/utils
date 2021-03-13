@@ -74,7 +74,8 @@ int event_init(struct event *evt);
 struct event my_event = EVENT_INIT(my_event);
 ~~~~~~~~~~~~~~~
 */
-#define EVENT_INIT(event) { .handlers = LIST_INIT((event).handlers) }
+#define EVENT_INIT(event) \
+    { .handlers = LIST_INIT((event).handlers), .current_handler = NULL }
 
 /**
 \brief attach an \ref event_handler to an \ref event
@@ -112,6 +113,6 @@ pointer to the current \ref event_handler.
 \param evt pointer to the \ref event
 \return pointer to the current \ref event_handler, or NULL if the event is not currently being published
 */
-struct event_hander *event_get_current_handler(struct event *evt);
+struct event_handler *event_get_current_handler(struct event *evt);
 
 #endif /* EVENT_H_ */

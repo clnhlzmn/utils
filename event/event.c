@@ -71,11 +71,16 @@ int event_publish(struct event *evt, void *ctx) {
         handler->flags |= ACTIVE;
         evt->current_handler = handler;
         if (handler->fun) handler->fun(evt, ctx);
-        handler->current_handler = NULL;
+        evt->current_handler = NULL;
         handler->flags &= ~ACTIVE;
         event_update_subscription(evt, last_handler);
         last_handler = handler;
     }
     event_update_subscription(evt, last_handler);
     return 0;
+}
+
+struct event_handler *event_get_current_handler(struct event *evt) {
+    if (!evt) return NULL;
+    return evt->current_handler;
 }
